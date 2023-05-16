@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EP_ICECREAMModelStoreContainer" CdmEntityContainer="EP_ICECREAMEntities">
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="EP_ICECREAMModel.Admin">
+        <MappingFragment StoreEntitySet="Admins">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Banners">
+      <EntityTypeMapping TypeName="EP_ICECREAMModel.Banner">
+        <MappingFragment StoreEntitySet="Banner">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Banner_name" ColumnName="Banner_name" />
+          <ScalarProperty Name="Banner_image" ColumnName="Banner_image" />
+          <ScalarProperty Name="slug" ColumnName="slug" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Blogs">
+      <EntityTypeMapping TypeName="EP_ICECREAMModel.Blog">
+        <MappingFragment StoreEntitySet="Blog">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="slug" ColumnName="slug" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Books">
+      <EntityTypeMapping TypeName="EP_ICECREAMModel.Book">
+        <MappingFragment StoreEntitySet="Book">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Book_id" ColumnName="Book_id" />
+          <ScalarProperty Name="titleBook" ColumnName="titleBook" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="bookImage" ColumnName="bookImage" />
+          <ScalarProperty Name="slug" ColumnName="slug" />
+          <ScalarProperty Name="Flavor_id" ColumnName="Flavor_id" />
+          <ScalarProperty Name="author" ColumnName="author" />
+          <ScalarProperty Name="priceBook" ColumnName="priceBook" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="quantity_sold" ColumnName="quantity_sold" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="created" ColumnName="created" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contacts">
+      <EntityTypeMapping TypeName="EP_ICECREAMModel.Contact">
+        <MappingFragment StoreEntitySet="Contact">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="fullName" ColumnName="fullName" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Flavors">
+      <EntityTypeMapping TypeName="EP_ICECREAMModel.Flavor">
+        <MappingFragment StoreEntitySet="Flavor">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Flavor_id" ColumnName="Flavor_id" />
+          <ScalarProperty Name="Flavor_title" ColumnName="Flavor_title" />
+          <ScalarProperty Name="Flavor_image" ColumnName="Flavor_image" />
+          <ScalarProperty Name="slug" ColumnName="slug" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="EP_ICECREAMModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="transactions_id" ColumnName="transactions_id" />
+          <ScalarProperty Name="Book_id" ColumnName="Book_id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="total_price" ColumnName="total_price" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentForRegisterdUsers">
+      <EntityTypeMapping TypeName="EP_ICECREAMModel.PaymentForRegisterdUser">
+        <MappingFragment StoreEntitySet="PaymentForRegisterdUser">
+          <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+          <ScalarProperty Name="RegisteredUser_id" ColumnName="RegisteredUser_id" />
+          <ScalarProperty Name="payfor" ColumnName="payfor" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Recipes">
+      <EntityTypeMapping TypeName="EP_ICECREAMModel.Recipe">
+        <MappingFragment StoreEntitySet="Recipe">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Recipe_id" ColumnName="Recipe_id" />
+          <ScalarProperty Name="Recipe_title" ColumnName="Recipe_title" />
+          <ScalarProperty Name="Recipe_image" ColumnName="Recipe_image" />
+          <ScalarProperty Name="slug" ColumnName="slug" />
+          <ScalarProperty Name="Recipe_ingredients" ColumnName="Recipe_ingredients" />
+          <ScalarProperty Name="Recipe_procedure" ColumnName="Recipe_procedure" />
+          <ScalarProperty Name="Flavor_id" ColumnName="Flavor_id" />
+          <ScalarProperty Name="Recipe_Author" ColumnName="Recipe_Author" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RegisteredUsers">
+      <EntityTypeMapping TypeName="EP_ICECREAMModel.RegisteredUser">
+        <MappingFragment StoreEntitySet="RegisteredUser">
+          <ScalarProperty Name="RegisteredUser_id" ColumnName="RegisteredUser_id" />
+          <ScalarProperty Name="fullName" ColumnName="fullName" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
+          <ScalarProperty Name="payfor" ColumnName="payfor" />
+          <ScalarProperty Name="created" ColumnName="created" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reviews">
+      <EntityTypeMapping TypeName="EP_ICECREAMModel.Review">
+        <MappingFragment StoreEntitySet="Review">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Book_id" ColumnName="Book_id" />
+          <ScalarProperty Name="RegisteredUser_id" ColumnName="RegisteredUser_id" />
+          <ScalarProperty Name="Visitor_id" ColumnName="Visitor_id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="transactions">
+      <EntityTypeMapping TypeName="EP_ICECREAMModel.transaction">
+        <MappingFragment StoreEntitySet="transactions">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="transactions_id" ColumnName="transactions_id" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="RegisteredUser_id" ColumnName="RegisteredUser_id" />
+          <ScalarProperty Name="Visitor_id" ColumnName="Visitor_id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="total_price" ColumnName="total_price" />
+          <ScalarProperty Name="payment" ColumnName="payment" />
+          <ScalarProperty Name="payment_info" ColumnName="payment_info" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="security" ColumnName="security" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="shipping" ColumnName="shipping" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Visitors">
+      <EntityTypeMapping TypeName="EP_ICECREAMModel.Visitor">
+        <MappingFragment StoreEntitySet="Visitor">
+          <ScalarProperty Name="Visitor_id" ColumnName="Visitor_id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="fullName" ColumnName="fullName" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8402aa7392634fa1b6ed249b74788b22" Name="Diagram1">
+        <EntityTypeShape EntityType="EP_ICECREAMModel.Admin" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EP_ICECREAMModel.Banner" Width="1.5" PointX="8.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EP_ICECREAMModel.Blog" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EP_ICECREAMModel.Book" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EP_ICECREAMModel.Contact" Width="1.5" PointX="9.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EP_ICECREAMModel.Flavor" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EP_ICECREAMModel.Order" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="EP_ICECREAMModel.PaymentForRegisterdUser" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="EP_ICECREAMModel.Recipe" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="EP_ICECREAMModel.RegisteredUser" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EP_ICECREAMModel.Review" Width="1.5" PointX="6" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EP_ICECREAMModel.transaction" Width="1.5" PointX="7.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EP_ICECREAMModel.Visitor" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="EP_ICECREAMModel.FK__Book__Flavor_id__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="EP_ICECREAMModel.FK__Order__Book_id__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="EP_ICECREAMModel.FK__Recipe__Flavor_i__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="EP_ICECREAMModel.FK__PaymentFo__Regis__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="EP_ICECREAMModel.FK__Review__Register__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="EP_ICECREAMModel.FK__Review__Visitor___37A5467C" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

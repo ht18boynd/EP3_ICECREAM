@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_LayoutHomePage.cshtml";
+}
+
+
+
+@if (Session["Login"] != null )
+{
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Login Success !!',
+            showConfirmButton: false,
+            timer: 1600
+        })
+    </script>
+    Session.Remove("Login");
+}
+
+

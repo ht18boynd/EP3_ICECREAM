@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EP_ICECREAMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admins">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Banner">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Banner_name" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Banner_image" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="slug" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Blog">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="image" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="slug" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Book">
+    <Key>
+      <PropertyRef Name="Book_id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Book_id" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="titleBook" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="content" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="bookImage" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="slug" Type="varchar" MaxLength="250" />
+    <Property Name="Flavor_id" Type="varchar" MaxLength="100" />
+    <Property Name="author" Type="varchar" MaxLength="100" />
+    <Property Name="priceBook" Type="int" />
+    <Property Name="discount" Type="int" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="quantity_sold" Type="int" />
+    <Property Name="status" Type="int" />
+    <Property Name="created" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fullName" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="description" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Flavor">
+    <Key>
+      <PropertyRef Name="Flavor_id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Flavor_id" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Flavor_title" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Flavor_image" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="slug" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="transactions_id" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Book_id" Type="varchar" MaxLength="100" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="total_price" Type="int" />
+    <Property Name="data" Type="text" />
+    <Property Name="status" Type="int" />
+  </EntityType>
+  <EntityType Name="PaymentForRegisterdUser">
+    <Key>
+      <PropertyRef Name="PaymentId" />
+    </Key>
+    <Property Name="PaymentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RegisteredUser_id" Type="int" />
+    <Property Name="payfor" Type="int" Nullable="false" />
+    <Property Name="status" Type="int" />
+  </EntityType>
+  <EntityType Name="Recipe">
+    <Key>
+      <PropertyRef Name="Recipe_id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Recipe_id" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Recipe_title" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Recipe_image" Type="varchar" MaxLength="250" />
+    <Property Name="slug" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Recipe_ingredients" Type="varchar(max)" Nullable="false" />
+    <Property Name="Recipe_procedure" Type="varchar(max)" Nullable="false" />
+    <Property Name="Flavor_id" Type="varchar" MaxLength="100" />
+    <Property Name="Recipe_Author" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="RegisteredUser">
+    <Key>
+      <PropertyRef Name="RegisteredUser_id" />
+    </Key>
+    <Property Name="RegisteredUser_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fullName" Type="varchar(max)" />
+    <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="13" />
+    <Property Name="address" Type="varchar(max)" Nullable="false" />
+    <Property Name="avatar" Type="varchar" MaxLength="100" />
+    <Property Name="payfor" Type="int" Nullable="false" />
+    <Property Name="created" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="Review">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Book_id" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="RegisteredUser_id" Type="int" Nullable="false" />
+    <Property Name="Visitor_id" Type="int" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="250" />
+    <Property Name="address" Type="varchar" MaxLength="100" />
+    <Property Name="description" Type="varchar" MaxLength="1000" />
+    <Property Name="status" Type="int" />
+  </EntityType>
+  <EntityType Name="transactions">
+    <Key>
+      <PropertyRef Name="transactions_id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="transactions_id" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="status" Type="int" />
+    <Property Name="RegisteredUser_id" Type="int" />
+    <Property Name="Visitor_id" Type="int" />
+    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="phonenumber" Type="varchar" MaxLength="13" />
+    <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="total_price" Type="int" />
+    <Property Name="payment" Type="varchar" MaxLength="50" />
+    <Property Name="payment_info" Type="text" />
+    <Property Name="message" Type="nvarchar(max)" />
+    <Property Name="security" Type="varchar" MaxLength="100" />
+    <Property Name="created" Type="smalldatetime" />
+    <Property Name="shipping" Type="int" />
+  </EntityType>
+  <EntityType Name="Visitor">
+    <Key>
+      <PropertyRef Name="Visitor_id" />
+    </Key>
+    <Property Name="Visitor_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="fullName" Type="varchar(max)" />
+    <Property Name="address" Type="varchar(max)" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="13" />
+  </EntityType>
+  <Association Name="FK__Book__Flavor_id__403A8C7D">
+    <End Role="Flavor" Type="Self.Flavor" Multiplicity="0..1" />
+    <End Role="Book" Type="Self.Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flavor">
+        <PropertyRef Name="Flavor_id" />
+      </Principal>
+      <Dependent Role="Book">
+        <PropertyRef Name="Flavor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order__Book_id__46E78A0C">
+    <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Book">
+        <PropertyRef Name="Book_id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Book_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PaymentFo__Regis__2A4B4B5E">
+    <End Role="RegisteredUser" Type="Self.RegisteredUser" Multiplicity="0..1" />
+    <End Role="PaymentForRegisterdUser" Type="Self.PaymentForRegisterdUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RegisteredUser">
+        <PropertyRef Name="RegisteredUser_id" />
+      </Principal>
+      <Dependent Role="PaymentForRegisterdUser">
+        <PropertyRef Name="RegisteredUser_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Recipe__Flavor_i__4316F928">
+    <End Role="Flavor" Type="Self.Flavor" Multiplicity="0..1" />
+    <End Role="Recipe" Type="Self.Recipe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flavor">
+        <PropertyRef Name="Flavor_id" />
+      </Principal>
+      <Dependent Role="Recipe">
+        <PropertyRef Name="Flavor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Review__Register__36B12243">
+    <End Role="RegisteredUser" Type="Self.RegisteredUser" Multiplicity="1" />
+    <End Role="Review" Type="Self.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RegisteredUser">
+        <PropertyRef Name="RegisteredUser_id" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="RegisteredUser_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Review__Visitor___37A5467C">
+    <End Role="Visitor" Type="Self.Visitor" Multiplicity="1" />
+    <End Role="Review" Type="Self.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Visitor">
+        <PropertyRef Name="Visitor_id" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="Visitor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EP_ICECREAMModelStoreContainer">
+    <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Banner" EntityType="Self.Banner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Blog" EntityType="Self.Blog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Flavor" EntityType="Self.Flavor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentForRegisterdUser" EntityType="Self.PaymentForRegisterdUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Recipe" EntityType="Self.Recipe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RegisteredUser" EntityType="Self.RegisteredUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Review" EntityType="Self.Review" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="transactions" EntityType="Self.transactions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Visitor" EntityType="Self.Visitor" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Book__Flavor_id__403A8C7D" Association="Self.FK__Book__Flavor_id__403A8C7D">
+      <End Role="Flavor" EntitySet="Flavor" />
+      <End Role="Book" EntitySet="Book" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order__Book_id__46E78A0C" Association="Self.FK__Order__Book_id__46E78A0C">
+      <End Role="Book" EntitySet="Book" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PaymentFo__Regis__2A4B4B5E" Association="Self.FK__PaymentFo__Regis__2A4B4B5E">
+      <End Role="RegisteredUser" EntitySet="RegisteredUser" />
+      <End Role="PaymentForRegisterdUser" EntitySet="PaymentForRegisterdUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Recipe__Flavor_i__4316F928" Association="Self.FK__Recipe__Flavor_i__4316F928">
+      <End Role="Flavor" EntitySet="Flavor" />
+      <End Role="Recipe" EntitySet="Recipe" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Review__Register__36B12243" Association="Self.FK__Review__Register__36B12243">
+      <End Role="RegisteredUser" EntitySet="RegisteredUser" />
+      <End Role="Review" EntitySet="Review" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Review__Visitor___37A5467C" Association="Self.FK__Review__Visitor___37A5467C">
+      <End Role="Visitor" EntitySet="Visitor" />
+      <End Role="Review" EntitySet="Review" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
