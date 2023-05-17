@@ -11,7 +11,9 @@ namespace EP3_ICE_CREAM.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class RegisteredUser
     {
         public RegisteredUser()
@@ -19,14 +21,37 @@ namespace EP3_ICE_CREAM.Models
             this.PaymentForRegisterdUsers = new HashSet<PaymentForRegisterdUser>();
             this.Reviews = new HashSet<Review>();
         }
-    
+
         public int RegisteredUser_id { get; set; }
+
+        [Required(ErrorMessage = "First Name is required")]
+        [DisplayName("First Name")]
+        [StringLength(160)]
         public string fullName { get; set; }
+
+        [Required(ErrorMessage = "Email Address is required")]
+        [DisplayName("Email Address")]
+        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}",
+        ErrorMessage = "Email is is not valid.")]
+        [DataType(DataType.EmailAddress)]
         public string email { get; set; }
+
+        [DisplayName("Enter Password")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$",
+        ErrorMessage = "Password must be between 6 and 20 characters and contain one uppercase letter, one lowercase letter, one digit and one special character.")]
         public string password { get; set; }
+
+        [Required(ErrorMessage = "Mobile Number is required")]
+        [DisplayName("Mobile Number")]
+        [RegularExpression(@"/(84|0[3|5|7|8|9])+([0-9]{8})\b/g;",ErrorMessage = "Mobile Number is required")]
         public string phone { get; set; }
+
+        [DisplayName("Enter Address")]
+        [Required(ErrorMessage = "Address is required")]
+        [StringLength(70)]
         public string address { get; set; }
         public string avatar { get; set; }
+
         public int payfor { get; set; }
         public Nullable<System.DateTime> created { get; set; }
     

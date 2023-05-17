@@ -132,6 +132,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PlavorController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RegisteredUsersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2777,6 +2779,13 @@
     <Content Include="Content\bootstrap\mixins.less" />
     <Content Include="Areas\Admin\Views\Admin\LoginAdmin.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\RegisteredUsers\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\RegisteredUsers\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\RegisteredUsers\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\RegisteredUsers\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\RegisteredUsers\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Plavor\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Plavor\CrateFlavors.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

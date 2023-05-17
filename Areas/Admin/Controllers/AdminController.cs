@@ -14,8 +14,15 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
         // GET: Admin/Admin
         public ActionResult Index()
         {
+            //Phân Quyền Login
+
+            if (Session["Login"] == null) 
+            {
+                return RedirectToAction("LoginAdmin");
+            }
             return View();
         }
+
         public ActionResult LoginAdmin()
         {
             return View();
@@ -41,8 +48,6 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
                 return Json(new { code = 500, msg = "UserName or Password not bank !" }, JsonRequestBehavior.AllowGet);
             }
         }
-
-
 
         public ActionResult Logout()
         {
