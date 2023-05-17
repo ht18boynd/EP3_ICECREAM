@@ -1,9 +1,10 @@
 ﻿
 @{
-    ViewBag.Title = "Login";
-    Layout = "~/Views/Shared/_LayoutHomePage.cshtml";
+    ViewBag.Title = "LoginAdmin";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
-<div class="my-account pt-80 pb-80">
+
+<<div class="my-account pt-80 pb-80">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -19,7 +20,7 @@
                     <div class="form-group row">
                         <label for="staticEmail" class="col-md-3 col-form-label">Email</label>
                         <div class="col-md-6">
-                            <input type="email" name="email" class="form-control" id="email">
+                            <input type="text" name="username" class="form-control" id="username">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -68,20 +69,7 @@
             icon: 'success',
             title: 'Logout Success !!',
             showConfirmButton: false,
-            timer: 1800
-        })
-    </script>
-    Session.Remove("Logout");
-}
-@if (Session["Register"] != null)
-{
-    <script>
-        Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Register Success !!',
-            showConfirmButton: false,
-            timer: 1800
+            timer: 1600
         })
     </script>
     Session.Remove("Logout");
@@ -94,14 +82,14 @@
 
     $(document).on('click', "button[name='dangnhap']", function () {
 
-        var _email = $("#email").val();
+        var _username = $("#username").val();
         var _password = $("#password").val();
 
         $.ajax({
-            url: '/Home/CheckLogin',
+            url: '/Admin/Admin/CheckLoginAdmin',
             type: 'post',
             data: {
-                email: _email,
+                username: _username,
                 password: _password,
             },
             success: function (data) {
@@ -120,14 +108,4 @@
     });
 
 </script>
-
-
-
-
-
-
-
-
-
-
 

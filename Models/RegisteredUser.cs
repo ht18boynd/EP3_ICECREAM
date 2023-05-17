@@ -11,7 +11,8 @@ namespace EP3_ICE_CREAM.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class RegisteredUser
     {
         public RegisteredUser()
@@ -21,9 +22,22 @@ namespace EP3_ICE_CREAM.Models
         }
     
         public int RegisteredUser_id { get; set; }
+        [Display(Name = "Full Name")]
+        [Required(ErrorMessage = "Not Null")]
         public string fullName { get; set; }
+        [Display(Name = "Email")]
+        [Required(ErrorMessage ="Not Null")]
+        [DataType(DataType.EmailAddress , ErrorMessage ="Example :abc@gmail.com")]
         public string email { get; set; }
+        [Display(Name ="Password")]
+        [Required(ErrorMessage ="Not Null")]
+        [DataType(DataType.Password)]
         public string password { get; set; }
+
+        [Display(Name = "Phone Number")]
+        [Required(ErrorMessage = "Not Null")]
+        [DataType(DataType.PhoneNumber)]
+        [StringLength(13, MinimumLength = 10 ,ErrorMessage = "From 10 to 13")]
         public string phone { get; set; }
         public string address { get; set; }
         public string avatar { get; set; }

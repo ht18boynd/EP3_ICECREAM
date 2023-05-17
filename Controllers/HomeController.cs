@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace EP3_ICE_CREAM.Controllers
@@ -51,6 +52,29 @@ namespace EP3_ICE_CREAM.Controllers
             Session.Remove("user");
             Session["Logout"] = 1;
             return RedirectToAction("Login");
+        }
+
+        public ActionResult Register()
+        {
+           return View();
+        }
+        [HttpPost]
+        public ActionResult Register(RegisteredUser user )
+        {
+            var user_t = db.RegisteredUsers.Where(s => s.email == user.email).SingleOrDefault();
+            if (user_t == null)
+            {
+                db.RegisteredUsers.Add(user);
+                db.SaveChanges();
+                Session["Register"] = 1;
+                return RedirectToAction("Login");
+
+            }
+            else
+            {
+                Session["Register"] = null;
+                return View("Register");
+            }
         }
         public user_temp u_temp(string _avatar, string _username, string _gmail, string _address, string _phone, string _checked)
         {

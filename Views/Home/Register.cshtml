@@ -1,0 +1,232 @@
+﻿@model EP3_ICE_CREAM.Models.RegisteredUser
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutHomePage.cshtml";
+}
+
+<div class="my-account pt-80 pb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="title text-capitalize mb-30 pb-25"> Register Account</h3>
+
+                @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group row pb-3 text-center">
+                        <div class="col-md-6 offset-md-3">
+                            <div class="login-form-links">
+                                <label name="thongbao" id="thongbao" style="color:red" class="for-get" value="" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.fullName, htmlAttributes: new { @class = "col-md-3 col-form-label" })
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.fullName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.fullName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "col-md-3 col-form-label" });
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "col-md-3 col-form-label" })
+                        <div class="col-md-6">
+
+                            @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+
+
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.phone, htmlAttributes: new { @class = "col-md-3 col-form-label" });
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.address, htmlAttributes: new { @class = "col-md-3 col-form-label" });
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.avatar, htmlAttributes: new { @class = "col-md-3 col-form-label" });
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.avatar, new { htmlAttributes = new { type = "file", @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.avatar, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.payfor, htmlAttributes: new { @class = "col-md-3 col-form-label" });
+
+
+                    </div>
+                    <section class="pricing py-5">
+                        <div class="container">
+                            <div class="row">
+
+                                <!-- Plus Tier -->
+                                <div class="col-lg-4">
+                                    <div class="card mb-5 mb-lg-0">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-muted text-uppercase text-center">For Month</h5>
+                                            <h6 class="card-price text-center">$5<span class="period">/month</span></h6>
+                                            <hr>
+                                            <ul class="fa-ul">
+                                                <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>5 Users</strong></li>
+                                                <li><span class="fa-li"><i class="fas fa-check"></i></span>50GB Storage</li>
+                                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects</li>
+                                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+                                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Private Projects</li>
+                                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Dedicated Phone Support</li>
+                                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Free Subdomain</li>
+                                                <li class="text-muted">
+                                                    <span class="fa-li"><i class="fas fa-times"></i></span>Monthly Status
+                                                    Reports
+                                                </li>
+                                            </ul>
+                                            @Html.RadioButtonFor(model => model.payfor, 5, new { htmlAttributes = new { @class = "form-control" } })
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Pro Tier -->
+                                <div class="col-lg-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-muted text-uppercase text-center">For Year</h5>
+                                            <h6 class="card-price text-center">$150<span class="period">/Year</span></h6>
+                                            <hr>
+                                            <ul class="fa-ul">
+                                                <li>
+                                                    <span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited Users</strong>
+                                                </li>
+                                                <li><span class="fa-li"><i class="fas fa-check"></i></span>150GB Storage</li>
+                                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects</li>
+                                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+                                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Private Projects</li>
+                                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Dedicated Phone Support</li>
+                                                <li>
+                                                    <span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited</strong> Free
+                                                    Subdomains
+                                                </li>
+                                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Monthly Status Reports</li>
+                                            </ul>
+                                            @Html.RadioButtonFor(model => model.payfor, 150, new { htmlAttributes = new { @class = "form-control" } })
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+                    <div class="form-group">
+                        <div id="myDiv" class="clickable" style="cursor: pointer;" onclick="getSelectedOption()">Click me!</div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <div id="paypal-button-container"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default" id="submitButton" />
+                        </div>
+                    </div>
+
+                }
+
+
+            </div>
+                </div>
+    </div>
+</div>
+@if (Session["Register"] == null)
+{
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Register False !! Email Have Exit ',
+            showConfirmButton: false,
+            timer: 1800
+        })
+    </script>
+    Session.Remove("Register");
+}
+
+
+<script>
+    
+    var selectedValue = 0;
+   
+    function getSelectedOption() {
+        var radioElements = document.getElementsByName("payfor");
+
+
+        for (var i = 0; i < radioElements.length; i++) {
+            if (radioElements[i].checked) {
+                window.selectedValue = radioElements[i].value;
+                break;
+            }
+
+
+        }
+
+    };
+    var submitButton = document.getElementById("submitButton");
+
+    // Ẩn nút dưới ban đầu
+    submitButton.style.display = "none";
+  
+    paypal.Buttons({
+        createOrder: function (data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: selectedValue // Replace with the desired amount
+                    }
+                }]
+            });
+        },
+        onApprove: function (data, actions) {
+            return actions.order.capture().then(function (details) {
+                // Handle the successful transaction completion
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Payment Success !!',
+                    showConfirmButton: false,
+                    timer: 1600
+                }),
+                    window.submitButton.style.display = "block";
+            });
+        }
+    }).render('#paypal-button-container');
+
+   
+   
+ 
+</script>
+
+
+
+
