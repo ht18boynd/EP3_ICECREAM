@@ -14,6 +14,8 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
     {
         private EP_ICECREAMEntities db = new EP_ICECREAMEntities();
 
+
+
         // GET: Admin/RegisteredUsers
         public ActionResult Index()
         {
@@ -82,7 +84,9 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 db.Entry(registeredUser).State = (System.Data.Entity.EntityState)System.Data.EntityState.Modified;
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

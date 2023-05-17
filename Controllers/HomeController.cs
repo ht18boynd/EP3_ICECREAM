@@ -21,6 +21,7 @@ namespace EP3_ICE_CREAM.Controllers
         {
             return View();
         }
+
         public JsonResult CheckLogin(string email, string password)
         {
             if (email != "" || password != "")
@@ -36,16 +37,11 @@ namespace EP3_ICE_CREAM.Controllers
                 {
                     return Json(new { code = 500, msg = "Email or Password Error !!" }, JsonRequestBehavior.AllowGet);
                 }
-
-
-
             }
             else
             {
                 return Json(new { code = 500, msg = "Email or Password not bank !" }, JsonRequestBehavior.AllowGet);
             }
-
-
         }
         public ActionResult Logout()
         {
@@ -78,7 +74,6 @@ namespace EP3_ICE_CREAM.Controllers
         }
         public user_temp u_temp(string _avatar, string _username, string _gmail, string _address, string _phone, string _checked)
         {
-
             user_temp tempp = new user_temp();
             tempp._avatar = _avatar;
             tempp._username = _username;
@@ -86,21 +81,18 @@ namespace EP3_ICE_CREAM.Controllers
             tempp._address = _address;
             tempp._phone = _phone;
             tempp._checked = _checked;
-
             return tempp;
         }
 
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }
