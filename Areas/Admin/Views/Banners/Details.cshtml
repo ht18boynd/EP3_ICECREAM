@@ -1,0 +1,45 @@
+﻿@model EP3_ICE_CREAM.Models.Banner
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Banner</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Banner_name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Banner_name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Banner_image)
+            </dt>
+    
+            <dd>
+                <img style="height:100px;width:100px" class="p-2" src="~/Uploads/Banners/@Html.DisplayFor(model => model.Banner_image)>
+            </dd>
+    
+            
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

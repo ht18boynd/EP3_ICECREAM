@@ -1,10 +1,21 @@
 ﻿
 @{
     ViewBag.Title = "LoginAdmin";
-    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = null;
 }
 
-<<div class="my-account pt-80 pb-80">
+
+<title>Login </title>
+<link href="~/Areas/Admin/Data/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="~/Areas/Admin/Data/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="~/Areas/Admin/Data/css/ruang-admin.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://lipis.github.io/bootstrap-sweetalert/lib/sweet-alert.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="~/Areas/Admin/Data/ckeditor/ckeditor.js"></script>
+
+<div class="my-account pt-80 pb-80">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -108,4 +119,27 @@
     });
 
 </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120946860-10"></script>
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-120946860-10', { 'anonymize_ip': true });
+</script>
+<script src="~/Areas/Admin/Data/vendor/jquery/jquery.min.js"></script>
+<script src="~/Areas/Admin/Data/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/Areas/Admin/Data/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="~/Areas/Admin/Data/vendor/chart.js/Chart.min.js"></script>
+<script src="~/Areas/Admin/Data/js/ruang-admin.min.js"></script>
+<script src="~/Areas/Admin/Data/js/demo/chart-area-demo.js"></script>
+<script src="~/Areas/Admin/Data/js/demo/chart-bar-demo.js"></script>
+<script src="~/Areas/Admin/Data/js/demo/chart-pie-demo.js"></script>
+
+<script src="~/Areas/Admin/Data/js/ruang-admin.js"></script>
+<script src="~/Areas/Admin/Data/ckeditor/ckeditor.js"></script>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
 

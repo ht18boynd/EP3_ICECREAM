@@ -13,7 +13,11 @@ namespace EP3_ICE_CREAM.Controllers
         private EP_ICECREAMEntities db = new EP_ICECREAMEntities();
         public ActionResult Index()
         {
-            return View();
+            ViewBag.banner = db.Banners.OrderByDescending(s => s.id).Take(3).ToList();
+            ViewBag.sanphambanchay = db.Books.OrderByDescending(s => s.quantity_sold).Take(12).ToList();
+            ViewBag.sanphammoinhat = db.Books.OrderByDescending(s => s.created).Take(12).ToList();
+            ViewBag.giamgiathapnhat = db.Books.OrderByDescending(s => s.discount).Take(3).ToList();
+            return View(db.Books.ToList().Take(12));
         }
 
         public ActionResult Login()

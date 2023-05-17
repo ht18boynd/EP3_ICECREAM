@@ -16,10 +16,7 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
         {
             //Phân Quyền Login
 
-            if (Session["Login"] == null) 
-            {
-                return RedirectToAction("LoginAdmin");
-            }
+            
             return View();
         }
 
