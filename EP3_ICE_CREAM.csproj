@@ -138,10 +138,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
-<<<<<<< HEAD
-=======
     <Compile Include="Areas\Admin\Controllers\PlavorController.cs" />
->>>>>>> b24a148c92adf8294af2a6e5331f375ffdf29d5e
     <Compile Include="Areas\Admin\Controllers\RegisteredUsersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -2793,11 +2790,8 @@
     <Content Include="Areas\Admin\Views\RegisteredUsers\Details.cshtml" />
     <Content Include="Areas\Admin\Views\RegisteredUsers\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\RegisteredUsers\Index.cshtml" />
-<<<<<<< HEAD
-=======
     <Content Include="Areas\Admin\Views\Plavor\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Plavor\CrateFlavors.cshtml" />
->>>>>>> b24a148c92adf8294af2a6e5331f375ffdf29d5e
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
