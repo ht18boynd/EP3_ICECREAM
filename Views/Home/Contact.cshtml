@@ -1,17 +1,82 @@
-﻿@{
+﻿@model EP3_ICE_CREAM.Models.Contact
+@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<div class="hero-wrap hero-bread" style="background-image: url('../../imgs/white-nissan-skyline-gtr-r35-coupe-wallpaper-3840x2160_54.jpg');">
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center">
+                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Contact us</span></p>
+                <h1 class="mb-0 bread">Contact us</h1>
+            </div>
+        </div>
+    </div>
+</div>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<section class="ftco-section contact-section bg-light">
+    <div class="container">
+        <div class="row d-flex mb-5 contact-info">
+            <div class="w-100"></div>
+            <div class="col-md-3 d-flex">
+                <div class="info bg-white p-4">
+                    <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex">
+                <div class="info bg-white p-4">
+                    <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex">
+                <div class="info bg-white p-4">
+                    <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex">
+                <div class="info bg-white p-4">
+                    <p><span>Website</span> <a href="#">yoursite.com</a></p>
+                </div>
+            </div>
+        </div>
+
+
+            <div class="row block-9">
+                <div class="col-md-6 order-md-last d-flex">
+                   
+                        @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new {@class="bg-white p-5 contact-form", enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.fullName, htmlAttributes: new { @class = "col-md-3 col-form-label" })
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.fullName, new {htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.fullName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "col-md-3 col-form-label" })
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "col-md-3 col-form-label" })
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.description, new {htmlAttributes = new { @class = "form-control"}})
+                                    @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+                            </div>
+                        }
+                    
+                    </div>
+                <div class="col-md-6 d-flex">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d646.284475463381!2d106.66597109359684!3d10.78648782595886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ed2392c44df%3A0xd2ecb62e0d050fe9!2zRlBUIEFwdGVjaCBIQ00gMSAtIEjhu4cgVGjhu5FuZyDEkMOgbyBU4bqhbyBM4bqtcCBUcsOsbmggVmnDqm4gUXXhu5FjIFThur8gKFNpbmNlIDE5OTkp!5e0!3m2!1svi!2s!4v1684406898427!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+</section>
