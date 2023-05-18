@@ -1,0 +1,117 @@
+﻿@model EP3_ICE_CREAM.Models.Flavor
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+@if (Session["Error"] != null)
+{
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Error  !!',
+            showConfirmButton: false,
+            timer: 1600
+        })
+    </script>
+    Session.Remove("Error");
+}
+
+<div class="container-fluid p-0">
+
+    <div class="mb-3">
+        <h1 class="h3 d-inline align-middle">List Banners</h1>
+
+    </div>
+    <div class="row">
+        <div class="col-md-9 col-xl-10">
+            @if (Request.UrlReferrer != null)
+            {
+                <button class="btn btn-outline-info" onclick="history.go(-1); return false;" id="hien">
+                    <i class="fas fa-backward"></i>
+                </button>
+                //  <a class="bottomNav" onclick="history.go(-1); return false;" href="#">Back</a><br />
+            }
+
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-12 col-xl-12">
+            <div class="tab-content">
+
+
+                <div class="card">
+                    <div class="card-body">
+                        @using (Html.BeginForm("EditPost", "Flavor", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <form>
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="row">
+                                    <div class="col-md-8">
+
+                                        <div class="mb-3">
+                                            @Html.HiddenFor(m => m.id, new { Value = @Model.id })
+
+                                        </div>
+                                        <div class="mb-3">
+                                            @Html.HiddenFor(m => m.Flavor_id, new { Value = @Model.Flavor_id })
+
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Name Flavor</label>
+                                            <input type="text" class="form-control" id="Flavor_title" name="Flavor_title" placeholder="Name of Flavor" value="@Model.Flavor_title">
+                                        </div>
+
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Image of Banner</label>
+                                            <input class="form-control form-control-lg" type="file" name="img" id="img" onchange="ImagesFileAsURL()" />
+                                            <br />
+                                            <div class="style_displayImg" id="displayImg">
+                                                <img src="~/Uploads/Flavors/@Model.Flavor_image" alt="Alternate Text" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </form>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function ImagesFileAsURL() {
+        var fileSelected = document.getElementById('img').files;
+        if (fileSelected.length > 0) {
+            var fileToLoad = fileSelected[0];
+            var fileReader = new FileReader();
+            fileReader.onload = function (fileLoaderEvent) {
+                var srcData = fileLoaderEvent.target.result;
+                var newImage = document.createElement('img');
+                newImage.src = srcData;
+                document.getElementById('displayImg').innerHTML = newImage.outerHTML;
+            }
+            fileReader.readAsDataURL(fileToLoad);
+        }
+    }
+
+    //
+
+    //// nếu chọn đơn hàng đã giao thì hẩn đang giao
+    //document.getElementById("hien").onclick = function () {
+    //    document.getElementById("hiddendiv").style.display = 'block';// hiện
+    //};
+</script>

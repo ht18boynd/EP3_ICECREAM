@@ -11,7 +11,8 @@ namespace EP3_ICE_CREAM.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Flavor
     {
         public Flavor()
@@ -21,8 +22,15 @@ namespace EP3_ICE_CREAM.Models
         }
     
         public int id { get; set; }
+        [Display(Name = "Flavor ID")]
+        [Required(ErrorMessage = "Not Null")]
         public string Flavor_id { get; set; }
+
+        [Display(Name = "Flavor Title")]
+        [Required(ErrorMessage = "Not Null")]
         public string Flavor_title { get; set; }
+        [Display(Name = "Flavor Image")]
+        [Required(ErrorMessage = "Not Null")]
         public string Flavor_image { get; set; }
         public string slug { get; set; }
     

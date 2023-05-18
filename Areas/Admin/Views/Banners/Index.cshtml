@@ -126,11 +126,11 @@
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                 <div class="mb-3">
                                     <label class="form-label">Banner Name</label>
-                                    <input class="form-control form-control-lg" type="text" name="Banner_name" id="Banner_name" placeholder="Enter Name Banner" />
+                                    <input class="form-control form-control-lg" type="text" name="Banner_name" id="Banner_name" placeholder="Enter Name Banner" required />
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Image</label>
-                                    <input class="form-control form-control-lg" type="file" name="img" id="img" onchange="ImagesFileAsURL()" />
+                                    <input class="form-control form-control-lg" type="file" name="img" id="img" onchange="ImagesFileAsURL()"  required/>
                                 </div>
                                 
 

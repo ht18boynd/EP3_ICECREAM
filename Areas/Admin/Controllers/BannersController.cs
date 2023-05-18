@@ -24,7 +24,7 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
             
             System.IO.File.Copy(Server.MapPath("/Uploads/ImgNull/null.png"), Path.Combine(Server.MapPath("/Uploads/Banners/null.png")), true);
            
-            var banner = db.Banners.ToList();
+            var banner = db.Banners.OrderByDescending(s=> s.id).ToList();
             if (page == null) page = 1;
             int pageSize = 5;
             int pageNumber = (page ?? 1);

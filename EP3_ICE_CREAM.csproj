@@ -56,6 +56,12 @@
       <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Source, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\PayPal.2.0.0-rc2\lib\netstandard2.0\Source.dll</HintPath>
     </Reference>
@@ -138,8 +144,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
-    <Compile Include="Areas\Admin\Controllers\PlavorController.cs" />
-    <Compile Include="Areas\Admin\Controllers\RegisteredUsersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BannersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\FlavorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2785,13 +2791,14 @@
     <Content Include="Content\bootstrap\mixins.less" />
     <Content Include="Areas\Admin\Views\Admin\LoginAdmin.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\RegisteredUsers\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\RegisteredUsers\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\RegisteredUsers\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\RegisteredUsers\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\RegisteredUsers\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Plavor\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Plavor\CrateFlavors.cshtml" />
+    <Content Include="Areas\Admin\Views\Banners\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Banners\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Banners\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Banners\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Banners\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Flavor\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Flavor\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Flavor\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2803,7 +2810,14 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Uploads\null.jpg" />
+    <Content Include="Uploads\Banners\120230517173715Danhmuc.jpg" />
+    <Content Include="Uploads\Banners\38720230517202606Danhmuc.jpg" />
+    <Content Include="Uploads\Banners\87620230517202548Danhmuc.jpg" />
+    <Content Include="Uploads\Banners\88720230517202557Danhmuc.jpg" />
+    <Content Include="Uploads\Banners\null.png" />
+    <Content Include="Uploads\Flavors\null.png" />
+    <Content Include="Uploads\ImgNull\null.png" />
+    <Content Include="Uploads\null.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
