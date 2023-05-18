@@ -45,21 +45,36 @@
                                 <div class="sign-btn">
                                     <button type="button" class="btn theme-btn--dark1 btn--md" name="dangnhap" id="dangnhap">Sign in</button>
                                 </div>
+                                <div class="border-top">
+                                    @Html.ActionLink("No account? Create one here", "Register", "Home", null, new { @class = "no-accoun" })
+
+
+                                </div>
                             </div>
                         </div>
+
                     </div>
-                    <div class="form-group row text-center mb-0">
-                        <div class="col-12">
-                            <div class="border-top">
-                                <a href="register.html" class="no-account">No account? Create one here</a>
-                            </div>
-                        </div>
-                    </div>
+
+
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+@if (Session["RecipeError"] != null)
+{
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Login To View Recipe !!',
+            showConfirmButton: false,
+            timer: 1800
+        })
+    </script>
+    Session.Remove("RecipeError");
+}
 @if (Session["Logout"] != null)
 {
     <script>
@@ -73,7 +88,7 @@
     </script>
     Session.Remove("Logout");
 }
-@if (Session["Register"] != null)
+@if (Session["Create"] != null)
 {
     <script>
         Swal.fire({
@@ -84,7 +99,7 @@
             timer: 1800
         })
     </script>
-    Session.Remove("Logout");
+    Session.Remove("Create");
 }
 
 

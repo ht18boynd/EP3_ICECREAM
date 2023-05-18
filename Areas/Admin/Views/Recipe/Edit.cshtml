@@ -1,0 +1,129 @@
+﻿@model EP3_ICE_CREAM.Models.Recipe
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script src="~/Areas/Admin/Data/ckeditor/ckeditor.js"></script>
+<main class="cc">
+    <div class="container-fluid p-0">
+
+        <div class="mb-3">
+            <h1 class="h3 d-inline align-middle">Danh sách khách hàng</h1>
+
+        </div>
+        <div class="row">
+            <div class="col-md-9 col-xl-10">
+                @if (Request.UrlReferrer != null)
+                {
+                    <button class="btn btn-outline-info" onclick="history.go(-1); return false;" id="hien">
+                        <i class="fas fa-backward"></i>
+                    </button>
+                    //  <a class="bottomNav" onclick="history.go(-1); return false;" href="#">Back</a><br />
+                }
+
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-12 col-xl-12">
+                <div class="tab-content">
+
+
+                    <div class="card">
+                        <div class="card-body">
+                            @using (Html.BeginForm("EditPost", "Recipe", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <form>
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    <div class="row">
+                                        <div class="col-md-8">
+
+                                            <div class="mb-3">
+
+                                                <div class="mb-3">
+                                                    <label class="form-label">@Model.Recipe_id</label>
+                                                    <input type="hidden" class="form-control" id="Recipe_id" name="Recipe_id" placeholder="Tên sản phẩm" value="@Model.Recipe_id">
+                                                </div>
+                                                <label class="form-label">Danh mục</label>
+                                                @Html.DropDownList("Flavor_id", null, htmlAttributes: new { @id = "Flavor_id", @class = "form-control" })
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Recipe_title</label>
+                                                <input type="text" class="form-control" id="Recipe_title" name="Recipe_title" placeholder="Tên sản phẩm" value="@Model.Recipe_title">
+                                            </div>
+                                            <div class="row">
+                                                <div class="mb-3 col-md-4">
+                                                    <label class="form-label">Recipe_Author</label>
+                                                    <input type="text" class="form-control" id="Recipe_Author" name="Recipe_Author" value="@Model.Recipe_Author">
+                                                </div>
+                                                <div class="mb-3 col-md-4">
+                                                    <label class="form-label">Recipe_procedure</label>
+                                                    <input type="text" class="form-control" id="Recipe_procedure" name="Recipe_procedure" value="@Model.Recipe_procedure">
+                                                </div>
+                                            </div>
+                                           
+                                            <div class="mb-3">
+                                                <label class="form-label" for="Recipe_ingredients">Recipe_ingredients</label>
+
+                                                <textarea rows="4" class="form-control" id="Recipe_ingredients" name="Recipe_ingredients"
+                                                          placeholder="Recipe_ingredients">@Model.Recipe_ingredients</textarea>
+                                                <script type="text/javascript" lang="javascript">
+                                                    CKEDITOR.replace("Recipe_ingredients");
+                                                </script>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="text-center">
+                                                @*<img alt="" src="img/avatars/avatar.jpg" class="rounded-circle img-responsive mt-2"
+                                                         width="128" height="128" />
+                                                    <div class="mt-2">
+                                                        <span class="btn btn-primary"><i class="fas fa-upload"></i> Upload</span>
+                                                    </div>*@
+                                                <div class="mb-3">
+                                                    <label class="form-label">Image</label>
+                                                    <input class="form-control form-control-lg" type="file" name="img" id="img" onchange="ImagesFileAsURL()" required />
+                                                    <br />
+                                                    <div class="style_displayImg" id="displayImg"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </form>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<script type="text/javascript">function ImagesFileAsURL() {
+        var fileSelected = document.getElementById('img').files;
+        if (fileSelected.length > 0) {
+            var fileToLoad = fileSelected[0];
+            var fileReader = new FileReader();
+            fileReader.onload = function (fileLoaderEvent) {
+                var srcData = fileLoaderEvent.target.result;
+                var newImage = document.createElement('img');
+                newImage.src = srcData;
+                document.getElementById('displayImg').innerHTML = newImage.outerHTML;
+            }
+            fileReader.readAsDataURL(fileToLoad);
+        }
+    }
+
+    //
+
+    //// nếu chọn đơn hàng đã giao thì hẩn đang giao
+    //document.getElementById("hien").onclick = function () {
+    //    document.getElementById("hiddendiv").style.display = 'block';// hiện
+    //};</script>
+
+

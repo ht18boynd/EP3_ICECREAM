@@ -59,22 +59,27 @@ namespace EP3_ICE_CREAM.Controllers
            return View();
         }
         [HttpPost]
-        public ActionResult Register(RegisteredUser user )
+        public ActionResult Register(RegisteredUser user , string email)
         {
-            var user_t = db.RegisteredUsers.Where(s => s.email == user.email).SingleOrDefault();
-            if (user_t == null)
+            if ((email != ""))
             {
-                db.RegisteredUsers.Add(user);
-                db.SaveChanges();
-                Session["Register"] = 1;
-                return RedirectToAction("Login");
+                var user_t = db.RegisteredUsers.Where(s => s.email == user.email).SingleOrDefault();
+                if (user_t == null)
+                {
+                    user.created = DateTime.Now;
+                    db.RegisteredUsers.Add(user);
+                    db.SaveChanges();
+                    Session["Create"] = 1;
+                    return RedirectToAction("Login");
 
-            }
-            else
-            {
-                Session["Register"] = null;
+                }
+                Session["ErrorCreate"] = 1;
                 return View("Register");
             }
+            
+            Session["ErrorCreate"] = 1;
+            return View("Register");
+            
         }
         public user_temp u_temp(string _avatar, string _username, string _gmail, string _address, string _phone, string _checked)
         {

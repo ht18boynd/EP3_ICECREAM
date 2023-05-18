@@ -135,7 +135,10 @@
 
                     </section>
                     <div class="form-group">
-                        <div id="myDiv" class="clickable" style="cursor: pointer;" onclick="getSelectedOption()">Click me!</div>
+                        <div class="btn btn-secondary">
+
+                            <div id="myDiv" class="clickable" style="cursor: pointer;" onclick="getSelectedOption()">Click Me !! To Continuce Paypal </div>
+                        </div>
                     </div>
 
 
@@ -148,7 +151,7 @@
 
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Create" class="btn btn-default" id="submitButton" />
+                            <input type="submit" value="Create" class="btn btn-success" id="submitButton" />
                         </div>
                     </div>
 
@@ -159,7 +162,7 @@
                 </div>
     </div>
 </div>
-@if (Session["Register"] == null)
+@if (Session["ErrorCreate"] != null)
 {
     <script>
         Swal.fire({
@@ -170,7 +173,7 @@
             timer: 1800
         })
     </script>
-    Session.Remove("Register");
+    Session.Remove("ErrorCreate");
 }
 
 

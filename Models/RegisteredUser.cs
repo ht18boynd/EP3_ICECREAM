@@ -46,7 +46,6 @@ namespace EP3_ICE_CREAM.Models
         [Display(Name = "Phone Number")]
         [Required(ErrorMessage = "Not Null")]
         [DataType(DataType.PhoneNumber)]
-        [RegularExpression(@"/(84|0[3|5|7|8|9])+([0-9]{8})\b/g;", ErrorMessage = "Mobile Number is required")]
 
         public string phone { get; set; }
 
@@ -57,7 +56,7 @@ namespace EP3_ICE_CREAM.Models
         public string avatar { get; set; }
 
         public int payfor { get; set; }
-        public Nullable<System.DateTime> created { get; set; }
+        public DateTime created { get; set; }
     
         public virtual ICollection<PaymentForRegisterdUser> PaymentForRegisterdUsers { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }

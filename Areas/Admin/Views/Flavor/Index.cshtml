@@ -46,7 +46,19 @@
     </script>
     Session.Remove("Delete");
 }
-
+@if (Session["Create"] != null)
+{
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Create Success !!',
+            showConfirmButton: false,
+            timer: 1600
+        })
+    </script>
+    Session.Remove("Create");
+}
 <div class="col-md-12">
     <div style="display:flex;justify-content:space-between">
         <div>
