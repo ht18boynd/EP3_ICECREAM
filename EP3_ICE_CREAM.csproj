@@ -2856,6 +2856,9 @@
     <Content Include="Areas\Admin\Views\Book\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Book\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Book\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Contact\DeleteContact.cshtml" />
+    <Content Include="Areas\Admin\Views\Contact\DetailsContac.cshtml" />
+    <Content Include="Areas\Admin\Views\Contact\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2985,6 +2988,7 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Shop.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,56 @@
+﻿@model PagedList.IPagedList<EP3_ICE_CREAM.Models.Recipe>
+@using PagedList.Mvc;
+@using PagedList;
+@{
+    ViewBag.Title = "Shop";
+    Layout = "~/Views/Shared/_LayoutHomePage.cshtml";
+}
+
+<section class="ftco-section ftco-degree-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 ftco-animate">
+                <div class="row">
+                    
+                    @foreach (var item in Model) { 
+                        <div class="col-md-12 d-flex ftco-animate">
+                        <div class="blog-entry align-self-stretch d-md-flex">
+                            <img class="img-fluid" src="~/Uploads/Recipes/@item.Recipe_image" alt="Colorlib Template" style="width: 300px; height: 300px;">
+                            <div class="text d-block pl-md-4">
+                                <div class="meta mb-3">
+                                    <div><a href="#">@item.Recipe_title</a></div>
+                                    <div><a href="#">@item.Recipe_Author</a></div>
+                                    <div><a href="#">@item.Flavor_id</a></div>
+
+                                    <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                                </div>
+                                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                <p>   @Html.ActionLink(" Read more ", "RecipeDetails", new { id = item.Recipe_id }, new { @class = "btn btn-outline-danger" })</p>
+
+                            </div>
+                        </div>
+                        </div>
+                    }
+                   
+                    
+                    
+                </div>
+            </div> <!-- .col-md-8 -->
+            <div class="col-lg-4 sidebar ftco-animate">
+                
+                
+
+                
+
+               
+
+                <div class="sidebar-box ftco-animate">
+                    <h3 class="heading">Paragraph</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
