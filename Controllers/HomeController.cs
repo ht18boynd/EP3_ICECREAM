@@ -104,10 +104,6 @@ namespace EP3_ICE_CREAM.Controllers
             ViewBag.Message = "Your contact page.";
             return View();
         }
-       public ActionResult Recipe()
-        {
-            ViewBag.recipe = db.Recipes.OrderByDescending(s => s.id).Take(3).ToList();
-
-        }
+    
     }
 }

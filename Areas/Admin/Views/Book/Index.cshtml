@@ -7,20 +7,19 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 <script src="~/Areas/Admin/Data/ckeditor/ckeditor.js"></script>
-<style>
-</style>
-<main class="cc">
+
+
     <div class="container-fluid p-0">
         <div class="row">
             <div class="col-md-12">
                 <div style="display:flex;justify-content:space-between">
-                    <div>                     
+                    <div>
                         <button class="btn btn-outline-primary" id="hien">Create New</button>
 
                         <input type="hidden" name="khachhang" id="khachhang" value="sanpham" />
                     </div>
                     <div>
-                        <h1 class="h3 d-inline align-middle">DS Khách Hàng</h1>
+                        <h1 class="h3 d-inline align-middle">List Book</h1>
                     </div>
                     <div>
                         <nav aria-label="Page navigation example">
@@ -80,28 +79,27 @@
                                                     <input type="number" class="form-control" id="quantity" name="quantity" required>
 
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">quantity_sold</label>
-                                                    <input type="number" class="form-control" id="quantity_sold" name="quantity_sold" required>
-
-                                                </div>
+                                 
 
                                                 <div class="mb-3">
-                                                    <label class="form-label" for="content"></label>
+                                                    <label class="form-label" for="contentBook"></label>
 
-                                                    <textarea rows="4" class="form-control" id="content" name="content"
+                                                    <textarea rows="4" class="form-control" id="contentBook" name="contentBook"
                                                               placeholder="content" required></textarea>
-                                                    
+                                                    <script type="text/javascript" lang="javascript">
+                                                        CKEDITOR.replace("contentBook");
+                                                    </script>
+
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="text-center">
-                                                   
+
                                                     <div class="mb-3">
                                                         <label class="form-label">Image</label>
                                                         <input class="form-control form-control-lg" type="file" name="img" id="img" onchange="ImagesFileAsURL()" required />
                                                         <br />
-                                                        <div class="style_displayImg" id="displayImg" ></div>
+                                                        <div class="style_displayImg" id="displayImg"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -120,12 +118,12 @@
     <div class="row">
         <div class="col-xl-12">
             <div class="card">
-               
+
                 <div class="card-body">
                     <table class="table table-striped" style="width:100%">
                         <thead>
                             <tr>
-                                
+
                                 <th>Danh mục</th>
                                 <th>title</th>
                                 <th>Author</th>
@@ -144,7 +142,7 @@
 
                                 <tr>
                                     <td>
-                                      
+
                                         <a class="" href="~/Admin/Book/@item.Book_id">
                                             <img src="~/Uploads/Books/@item.bookImage" class=" my-n1 img-product" width="150" height="150" alt="Image-Product">
                                         </a>
@@ -175,7 +173,6 @@
     </div>
     <br />
 
-</main>
 
 <script type="text/javascript">
 
@@ -202,11 +199,8 @@
     document.getElementById("hien").onclick = function () {
         document.getElementById("hiddendiv").style.display = 'block';// hiện
     };
-   
+
 </script>
-@*<script type="text/javascript" lang="javascript">
-   // CKEDITOR.replace("content");
-</script>*@
 
 
 

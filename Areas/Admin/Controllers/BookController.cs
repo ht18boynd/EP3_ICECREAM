@@ -37,11 +37,11 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
 
             return View();
         }
-        [HttpPost]
 
+        [HttpPost, ValidateInput(false)]
 
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Book book, HttpPostedFileBase img, string titleBook, string content, string Flavor_id, string author, int priceBook, int discount, int quantity, int quantity_sold)
+        public ActionResult Create(Book book, HttpPostedFileBase img, string titleBook, string contentBook, string Flavor_id, string author, int priceBook, int discount, int quantity)
         {
             ViewBag.Flavor_id = new SelectList(db.Flavors, "Flavor_id", "Flavor_title", book.Flavor_id);
 
@@ -64,7 +64,7 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
             {
                 book.bookImage = "null.jpg";
             }
-            book.content = content;
+            book.content = contentBook;
             book.author = author;
             string Book_id = DateTime.Now.ToString("yyyyMMddHHmmss") + "recipes";
             book.Book_id = Book_id;
@@ -72,7 +72,7 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
             book.titleBook = titleBook;
             book.quantity = quantity;
             book.discount = discount;
-            book.quantity_sold = quantity_sold;
+            book.quantity_sold = 0;
             book.priceBook = priceBook;
             book.status = 1;
             book.created = DateTime.Now;
@@ -110,7 +110,7 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost, ValidateInput(false)]
         [ValidateAntiForgeryToken]
-        public ActionResult EditPost(string book_id, HttpPostedFileBase img, string titleBook, string content, string Flavor_id, string author, int priceBook, int discount, int quantity, int quantity_sold)
+        public ActionResult EditPost(string book_id, HttpPostedFileBase img, string titleBook, string contentBook, string Flavor_id, string author, int priceBook, int discount, int quantity, int quantity_sold)
         {
 
             if (book_id != null)
@@ -144,7 +144,7 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
                     book.slug = $"/" + newFileName;
                 }
 
-                book.content = content;
+                book.content = contentBook;
                 book.author = author;
 
                 book.Book_id = book_id;

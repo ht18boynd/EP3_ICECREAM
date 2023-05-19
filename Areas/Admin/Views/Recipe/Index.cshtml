@@ -55,12 +55,12 @@
         <div class="col-md-12">
             <div style="display:flex;justify-content:space-between">
                 <div>
-                    <form class="d-flex flex-row align-items-center flex-wrap" action=""
+                    @*<form class="d-flex flex-row align-items-center flex-wrap" action=""
                          )">
                         <label for="search" class="mx-2 my-1">Search</label> 
                         <input type="search" class="form-control w-auto"  id="search" name="search" value="@ViewBag.Search" placeholder="Search Hear ...."/>
                         <button type="submit" class="btn btn-primary mx-2">Go</button>
-                    </form>
+                    </form>*@
                     <button class="btn btn-outline-primary" id="hien">Create New</button>
 
 
@@ -84,17 +84,8 @@
                        LinkToNextPageFormat = "Trang tiếp",
                    })
                     </nav>
-                    @*Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount*@
                 </div>
             </div>
-
-
-
-
-
-
-
-
         </div>
     </div>
     <div class="row">
@@ -143,11 +134,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="text-center">
-                                                @*<img alt="" src="img/avatars/avatar.jpg" class="rounded-circle img-responsive mt-2"
-                                                         width="128" height="128" />
-                                                    <div class="mt-2">
-                                                        <span class="btn btn-primary"><i class="fas fa-upload"></i> Upload</span>
-                                                    </div>*@
+                                              
                                                 <div class="mb-3">
                                                     <label class="form-label">Image</label>
                                                     <input class="form-control form-control-lg" type="file" name="img" id="img" onchange="ImagesFileAsURL()" required />

@@ -51,44 +51,44 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label">titleBook</label>
-                                                <input type="text" class="form-control" id="titleBook" name="titleBook" placeholder="Tên sản phẩm" value="@Model.titleBook">
+                                                <input type="text" class="form-control" id="titleBook" name="titleBook" placeholder="Tên sản phẩm" value="@Model.titleBook" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label">priceBook</label>
-                                                <input type="number" class="form-control" id="priceBook" name="priceBook" placeholder="Tên sản phẩm" value="@Model.priceBook">
+                                                <input type="number" class="form-control" id="priceBook" name="priceBook" placeholder="Tên sản phẩm" value="@Model.priceBook" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label">quantity</label>
-                                                <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Tên sản phẩm" value="@Model.quantity">
+                                                <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Tên sản phẩm" value="@Model.quantity" required>
                                             </div>
                                             <div class="row">
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label">quantity_sold</label>
-                                                    <input type="number" class="form-control" id="quantity_sold" name="quantity_sold" value="@Model.quantity_sold">
+                                                    <input type="number" class="form-control" id="quantity_sold" name="quantity_sold" value="@Model.quantity_sold" required>
                                                 </div>
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label">discount</label>
-                                                    <input type="number" class="form-control" id="discount" name="discount" value="@Model.discount">
+                                                    <input type="number" class="form-control" id="discount" name="discount" value="@Model.discount" required>
                                                 </div>
                                             </div>
 
                                             <div class="mb-3">
-                                                <label class="form-label" for="content">content</label>
+                                                <label class="form-label" for="contentBook">content</label>
 
-                                                <textarea rows="4" class="form-control" id="content" name="content"
+                                                <textarea rows="4" class="form-control" id="contentBook" name="contentBook"
                                                           placeholder="Recipe_ingredients">@Model.content</textarea>
-
+                                                <script type="text/javascript" lang="javascript">
+                                                    CKEDITOR.replace("contentBook");
+                                                </script>
                                             </div>
                                         </div><div class="col-md-4">
                                             <div class="text-center">
-                                                @*<img alt="" src="img/avatars/avatar.jpg" class="rounded-circle img-responsive mt-2"
-                                                         width="128" height="128" />
-                                                    <div class="mt-2">
-                                                        <span class="btn btn-primary"><i class="fas fa-upload"></i> Upload</span>
-                                                    </div>*@
+                                               
                                                 <div class="mb-3">
                                                     <label class="form-label">Image</label>
-                                                    <input class="form-control form-control-lg" type="file" name="img" id="img" onchange="ImagesFileAsURL()" required />
+                                                    <img src="~/Uploads/Books/@Model.bookImage" class="img-fluid" style="width: 200px; height: 200px;" alt="Image-Recipe">
+
+                                                    <input class="form-control form-control-lg" type="file" name="img" id="img" onchange="ImagesFileAsURL()" value="@Model.bookImage"  />
                                                     <br />
                                                     <div class="style_displayImg" id="displayImg"></div>
                                                 </div>

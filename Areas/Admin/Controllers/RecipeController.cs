@@ -22,14 +22,7 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
         {
             System.IO.File.Copy(Server.MapPath("/Uploads/ImgNull/null.png"), Path.Combine(Server.MapPath("/Uploads/Recipes/null.png")), true);
 
-            if (search !=null)
-            {
-                //Search
 
-                List<Recipe> r = db.Recipes.Where(row => row.Recipe_title.Contains(search)).ToList();
-                ViewBag.Search = search;
-                return View(r);
-            }
             //Search
             
                 List<Recipe> recipes = db.Recipes.Where(row => row.Recipe_title.Contains(search)).ToList();

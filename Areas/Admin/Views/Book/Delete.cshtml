@@ -74,11 +74,14 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label class="form-label" for="content">content</label>
+                                        <label class="form-label" for="contentBook">contentBook</label>
 
-                                        <textarea rows="4" class="form-control " id="content" name="content"
+                                        <textarea rows="4" class="form-control " id="contentBook" name="contentBook"
                                                   placeholder="content">@Model.content</textarea>
-                                        
+                                      
+                                        <script type="text/javascript" lang="javascript">
+                                            CKEDITOR.replace("contentBook");
+                                        </script>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
