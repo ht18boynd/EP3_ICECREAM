@@ -10,7 +10,7 @@
     <div class="container-fluid p-0">
 
         <div class="mb-3">
-            <h1 class="h3 d-inline align-middle">Danh sách khách hàng</h1>
+            <h1 class="h3 d-inline align-middle">Edit Recipe</h1>
 
         </div>
         <div class="row">
@@ -83,7 +83,8 @@
                                                         <span class="btn btn-primary"><i class="fas fa-upload"></i> Upload</span>
                                                     </div>*@
                                                 <div class="mb-3">
-                                                    <label class="form-label">Image</label>
+                                                    <img src="~/Uploads/Recipes/@Model.Recipe_image" class="img-fluid" style="width: 200px; height: 200px;" alt="Image-Recipe">
+
                                                     <input class="form-control form-control-lg" type="file" name="img" id="img" onchange="ImagesFileAsURL()" required />
                                                     <br />
                                                     <div class="style_displayImg" id="displayImg"></div>

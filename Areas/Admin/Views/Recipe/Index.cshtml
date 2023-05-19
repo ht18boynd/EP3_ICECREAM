@@ -6,196 +6,222 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 <script src="~/Areas/Admin/Data/ckeditor/ckeditor.js"></script>
-<style>
-</style>
-<main class="cc">
-    <div class="container-fluid p-0">
+@if (Session["UpdateSuccess"] != null)
+{
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'UpdateSuccess Success !!',
+            showConfirmButton: false,
+            timer: 1600
+        })
+    </script>
+    Session.Remove("UpdateSuccess");
+}
+@if (Session["CreateSuccess"] != null)
+{
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'CreateSuccess Success !!',
+            showConfirmButton: false,
+            timer: 1600
+        })
+    </script>
+    Session.Remove("CreateSuccess");
+}
+
+@if (Session["DeleteSuccess"] != null)
+{
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'DeleteSuccess Success !!',
+            showConfirmButton: false,
+            timer: 1600
+        })
+    </script>
+    Session.Remove("DeleteSuccess");
+}
+
+<div class="container-fluid p-0">
 
 
-        <div class="row">
+    <div class="row">
 
-            <div class="col-md-12">
-                <div style="display:flex;justify-content:space-between">
-                    <div>
-                        @*@if (Request.UrlReferrer != null)
-                            {
-                                <button class="btn btn-outline-info" onclick="history.go(-1); return false;">
-                                    <i class="fas fa-backward"></i>
-                                </button>
-                                //  <a class="bottomNav" onclick="history.go(-1); return false;" href="#">Back</a><br />
-                            }*@
-                        <button class="btn btn-outline-primary" id="hien">Create New</button>
+        <div class="col-md-12">
+            <div style="display:flex;justify-content:space-between">
+                <div>
+                    <form class="d-flex flex-row align-items-center flex-wrap" action=""
+                         )">
+                        <label for="search" class="mx-2 my-1">Search</label> 
+                        <input type="search" class="form-control w-auto"  id="search" name="search" value="@ViewBag.Search" placeholder="Search Hear ...."/>
+                        <button type="submit" class="btn btn-primary mx-2">Go</button>
+                    </form>
+                    <button class="btn btn-outline-primary" id="hien">Create New</button>
 
 
-                        <input type="hidden" name="khachhang" id="khachhang" value="sanpham" />
-
+                    <input type="hidden" name="khachhang" id="khachhang" value="sanpham" />
 
 
 
-                    </div>
-                    <div>
-                        <h1 class="h3 d-inline align-middle">DS Khách Hàng</h1>
-                    </div>
-                    <div>
-                        <nav aria-label="Page navigation example">
 
-                            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions()
-                       {
-                           UlElementClasses = new[] { "pagination justify-content-end" },
-                           LiElementClasses = new[] { "page-item", "page-link" },
-                           LinkToPreviousPageFormat = "Trang trước",
-                           LinkToNextPageFormat = "Trang tiếp",
-                       })
-                        </nav>
-                        @*Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount*@
-                    </div>
                 </div>
+                <div>
+                    <h1 class="h3 d-inline align-middle">Recipe List</h1>
+                </div>
+                <div>
+                    <nav aria-label="Page navigation example">
 
-
-
-
-
-
-
-
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-9 col-xl-10">
-                <div class="tab-content">
-                    <div id="hiddendiv">
-
-                        <div class="card">
-                            <div class="card-body">
-                                @using (Html.BeginForm("Create", "Recipe", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                                {
-                                    @Html.AntiForgeryToken()
-                                    <form>
-                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                        <div class="row">
-                                            <div class="col-md-8">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Danh mục</label>
-                                                    @Html.DropDownList("Flavor_id", null, htmlAttributes: new { @class = "form-control" })
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Tên sản phẩm</label>
-                                                    <input type="text" class="form-control" id="Recipe_title" name="Recipe_title" required>
-
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Recipe Author</label>
-                                                    <input type="text" class="form-control" id="Recipe_Author" name="Recipe_Author" required>
-
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Recipe_procedure</label>
-                                                    <input type="text" class="form-control" id="Recipe_procedure" name="Recipe_procedure" required>
-
-                                                </div>
-
-                                                <div class="mb-3">
-                                                    <label class="form-label" for="Recipe_ingredients"></label>
-
-                                                    <textarea rows="4" class="form-control" id="Recipe_ingredients" name="Recipe_ingredients"
-                                                              placeholder="Chi tiết sản phẩm" required></textarea>
-                                                    <script type="text/javascript" lang="javascript">
-                                                        CKEDITOR.replace("Recipe_ingredients");
-                                                    </script>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="text-center">
-                                                    @*<img alt="" src="img/avatars/avatar.jpg" class="rounded-circle img-responsive mt-2"
-                                                             width="128" height="128" />
-                                                        <div class="mt-2">
-                                                            <span class="btn btn-primary"><i class="fas fa-upload"></i> Upload</span>
-                                                        </div>*@
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Image</label>
-                                                        <input class="form-control form-control-lg" type="file" name="img" id="img" onchange="ImagesFileAsURL()" required />
-                                                        <br />
-                                                        <div class="style_displayImg" id="displayImg"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Save changes</button>
-                                    </form>
-                                }
-
-                            </div>
-                        </div>
-                    </div>
+                        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions()
+                   {
+                       UlElementClasses = new[] { "pagination justify-content-end" },
+                       LiElementClasses = new[] { "page-item", "page-link" },
+                       LinkToPreviousPageFormat = "Trang trước",
+                       LinkToNextPageFormat = "Trang tiếp",
+                   })
+                    </nav>
+                    @*Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount*@
                 </div>
             </div>
+
+
+
+
+
+
+
+
         </div>
     </div>
     <div class="row">
-        <div class="col-xl-12">
-            <div class="card">
-                @*<div class="card-header pb-0">
-                        <div class="card-actions float-end">
-                            <div class="dropdown show">
-                                <a href="#" data-bs-toggle="dropdown" data-bs-display="static">
-                                    <i class="align-middle" data-feather="more-horizontal"></i>
-                                </a>
+        <div class="col-md-9 col-xl-10">
+            <div class="tab-content">
+                <div id="hiddendiv">
 
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </div>
-                        </div>
-                        <h5 class="card-title mb-0">Clients</h5>
-                    </div>*@
-                <div class="card-body">
-                    <table class="table table-striped" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Danh mục</th>
-                                <th>Recipe_title</th>
-                                <th>Recipe Author</th>
-                                <th>Recipe_procedure</th>
-                                <th>Recipe_ingredients</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
+                    <div class="card">
+                        <div class="card-body">
+                            @using (Html.BeginForm("Create", "Recipe", FormMethod.Post, new { enctype = "multipart/form-data" }))
                             {
+                                @Html.AntiForgeryToken()
+                                <form>
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="mb-3">
+                                                <label class="form-label">Flavor List</label>
+                                                @Html.DropDownList("Flavor_id", null, htmlAttributes: new { @class = "form-control" })
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Recipe Name</label>
+                                                <input type="text" class="form-control" id="Recipe_title" name="Recipe_title" required>
 
-                                <tr>
-                                    <td>
-                                        <a class="" href="~/Admin/Recipe/Details/@item.Recipe_id">
-                                            <img src="~/Uploads/Recipes/@item.Recipe_image" class=" my-n1 img-product" alt="Image-Product">
-                                        </a>
-                                    </td>
-                                    <td style="max-width:300px;min-width:200px"><p style="">@item.Recipe_title</p></td>
-                                    <td>@item.Recipe_Author</td>
-                                    <td>@item.Recipe_procedure</td>
-                                    <td>@item.Recipe_ingredients</td>
-                                    <td>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Recipe Author</label>
+                                                <input type="text" class="form-control" id="Recipe_Author" name="Recipe_Author" required>
 
-                                        @Html.ActionLink("Update", "Edit", new { id = item.Recipe_id }, new { @class = "btn btn-info" })
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.Recipe_id }, new { @class = "btn btn-danger" })
-                                    </td>
-                                </tr>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Recipe Procedure</label>
+                                                <input type="text" class="form-control" id="Recipe_procedure" name="Recipe_procedure" required>
 
+                                            </div>
 
+                                            <div class="mb-3">
+                                                <label class="form-label" for="Recipe Ingredients"></label>
+
+                                                <textarea rows="4" class="form-control" id="Recipe_ingredients" name="Recipe_ingredients"
+                                                          placeholder="Chi tiết sản phẩm" required></textarea>
+                                                <script type="text/javascript" lang="javascript">
+                                                    CKEDITOR.replace("Recipe_ingredients");
+                                                </script>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="text-center">
+                                                @*<img alt="" src="img/avatars/avatar.jpg" class="rounded-circle img-responsive mt-2"
+                                                         width="128" height="128" />
+                                                    <div class="mt-2">
+                                                        <span class="btn btn-primary"><i class="fas fa-upload"></i> Upload</span>
+                                                    </div>*@
+                                                <div class="mb-3">
+                                                    <label class="form-label">Image</label>
+                                                    <input class="form-control form-control-lg" type="file" name="img" id="img" onchange="ImagesFileAsURL()" required />
+                                                    <br />
+                                                    <div class="style_displayImg" id="displayImg"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </form>
                             }
-                        </tbody>
-                    </table>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
-    <br />
+</div>
+<!-- Datatables -->
+<div class="col-lg-12">
+    <div class="card mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">DataTables</h6>
+        </div>
+        <div class="table-responsive p-3">
+          <table class="table align-items-center table-flush" id="dataTable">
+                <thead class="thead-light">
+                    <tr>
+                        <th>#</th>
+                        <th>Flavor</th>
+                        <th>Recipe Title</th>
+                        <th>Recipe Author</th>
+                        <th>Recipe Procedure</th>
+                        <th>Recipe Ingredients</th>
+                    </tr>
+                </thead>
+              
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                      
+                        <tr>
+                            <td>
 
-</main>
+                                <img src="~/Uploads/Recipes/@item.Recipe_image" class="img-fluid" style="width: 150px; height: 150px;" alt="Image-Recipe">
+
+                            </td>
+                            <td>@item.Flavor_id</td>
+                            <td>@item.Recipe_title</td>
+                            <td>@item.Recipe_Author</td>
+                            <td>@item.Recipe_procedure</td>
+                            <td>@item.Recipe_ingredients</td>
+                            <td>
+
+                                @Html.ActionLink("Update", "Edit", new { id = item.Recipe_id }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Recipe_id }, new { @class = "btn btn-danger" })
+                            </td>
+                        </tr>
+
+
+                    }
+
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<br />
+
 
 <script type="text/javascript">
 
@@ -212,11 +238,14 @@
             }
             fileReader.readAsDataURL(fileToLoad);
         }
-    }
+    };
 
     //
+    var hiddendiv = document.getElementById("hiddendiv");
 
-    // nếu chọn đơn hàng đã giao thì hẩn đang giao
+    // Ẩn nút dưới ban đầu
+    hiddendiv.style.display = "none";
+
     document.getElementById("hien").onclick = function () {
         document.getElementById("hiddendiv").style.display = 'block';// hiện
     };

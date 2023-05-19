@@ -5,9 +5,38 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
+@if (Session["UpdateSuccess"] != null)
+{
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Update Success !!',
+            showConfirmButton: false,
+            timer: 1600
+        })
+    </script>
 
+    Session.Remove("UpdateSuccess");
+
+}
+@if (Session["DeleteSuccess"] != null)
+{
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Delete Success !!',
+            showConfirmButton: false,
+            timer: 1600
+        })
+    </script>
+
+    Session.Remove("DeleteSuccess");
+
+}
 <div class="col-md-12">
-   
+
     <!-- Container Fluid-->
     <div class="container-fluid" id="container-wrapper">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -19,6 +48,12 @@
             </ol>
         </div>
         <div style="display:flex;justify-content:space-between">
+            <div>
+                <form>
+                    <input type="text" class="search-form" id="Search" name="Search" value="@ViewBag.Search"/>
+                    <button type="submit" class="btn btn-primary mx-2" >Go</button>
+                </form>
+            </div>
             <div>
                 <h1 class="h3 d-inline align-middle">Registered User List</h1>
             </div>
@@ -47,28 +82,30 @@
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>
+                                  
                                     <th>FullName</th>
                                     <th>Email</th>
                                     <th>Phone Number</th>
                                     <th>Address</th>
-                                    <th>Avartar</th>
                                     <th>Payfor</th>
                                     <th>Date Time End </th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
-                              
+                               
+
                                 @foreach (var item in Model)
                                 {
+                                    
                                     <tr>
+                                        
                                         <td>
                                             @item.fullName
                                         </td>
                                         <td>@item.email</td>
                                         <td>@item.phone</td>
                                         <td>@item.address</td>
-                                        <td>@item.avatar</td>
                                         @if (@item.payfor.Equals(5))
                                         {
 
@@ -107,9 +144,9 @@
                                             }
                                         }
                                     </tr>
-                                   
+
                                 }
-                                </tbody>
+                            </tbody>
                         </table>
                     </div>
                     <div class="card-footer"></div>

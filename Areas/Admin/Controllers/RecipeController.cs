@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.IO;
@@ -17,17 +18,32 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
         private EP_ICECREAMEntities db = new EP_ICECREAMEntities();
 
         // GET: Admin/Recipe
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page ,string search="" ,string SortColumn="Recipe_id" , string  IconClass="fa-sort-asc")
         {
-            ViewBag.Flavor_id = new SelectList(db.Flavors, "Flavor_id", "Flavor_title");
-
-
             System.IO.File.Copy(Server.MapPath("/Uploads/ImgNull/null.png"), Path.Combine(Server.MapPath("/Uploads/Recipes/null.png")), true);
+
+            if (search !=null)
+            {
+                //Search
+
+                List<Recipe> r = db.Recipes.Where(row => row.Recipe_title.Contains(search)).ToList();
+                ViewBag.Search = search;
+                return View(r);
+            }
+            //Search
+            
+                List<Recipe> recipes = db.Recipes.Where(row => row.Recipe_title.Contains(search)).ToList();
+                ViewBag.Search = search;
+           
+            
+            //Page
 
             var recipe = db.Recipes.OrderByDescending(s => s.id).ToList();
             if (page == null) page = 1;
             int pageSize = 5;
             int pageNumber = (page ?? 1);
+            ViewBag.Flavor_id = new SelectList(db.Flavors, "Flavor_id", "Flavor_title");
+
             return View(recipe.ToPagedList(pageNumber, pageSize));
         }
         public ActionResult Create()
@@ -79,7 +95,7 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
             }
            
 
-            Session["Create"] = recipe.id.ToString();
+            Session["CreateSuccess"] = recipe.id.ToString();
             ViewBag.Flavor_id = new SelectList(db.Flavors, "Flavor_id", "Flavor_title", recipe.Flavor_id);
             return View(recipe);
         }
@@ -108,8 +124,6 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
         public ActionResult EditPost(string Recipe_id, HttpPostedFileBase img, string Recipe_title, string Flavor_id, string Recipe_Author, string Recipe_ingredients, string Recipe_procedure)
         {
 
-            if (Recipe_id != null)
-            {
                 Recipe recipe = db.Recipes.Where(s => s.Recipe_id == Recipe_id).FirstOrDefault();
                 string _path = Server.MapPath("~/Uploads/Recipes/");
                 if (img != null)
@@ -153,19 +167,14 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
+                Session["UpdateSuccess"] = 1;
                 ViewBag.Flavor_id = new SelectList(db.Flavors, "Flavor_id", "Flavor_title", recipe.Flavor_id);
                 return RedirectToAction("Index");
-            }
-            else
-            {
-                return View("loi");
-            }
+            
+       
 
         }
-        public ActionResult loi()
-        {
-            return View();
-        }
+  
 
 
         // GET: Admin/recipes/Delete/5
@@ -206,6 +215,7 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
 
             db.Recipes.Remove(recipe);
             db.SaveChanges();
+            Session["DeleteSuccess"] = 1;
             return RedirectToAction("Index");
         }
 
