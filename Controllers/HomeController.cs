@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
 using PagedList;
-
+using System.Net;
 
 namespace EP3_ICE_CREAM.Controllers
 {
@@ -108,6 +108,34 @@ namespace EP3_ICE_CREAM.Controllers
             int pageNumber = (page ?? 1);
             return View(book.ToPagedList(pageNumber, pageSize));
 
+        }
+        public ActionResult Recipe(int? page)
+        {
+
+            ViewBag.Flavor_id = new SelectList(db.Flavors, "Flavor_id", "Flavor_title");
+
+
+
+            var recipe = db.Recipes.OrderByDescending(s => s.id).ToList();
+            if (page == null) page = 1;
+            int pageSize = 7;
+            int pageNumber = (page ?? 1);
+            return View(recipe.ToPagedList(pageNumber, pageSize));
+
+        }
+        public ActionResult RecipeDetails(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Recipe recipe = db.Recipes.Find(id);
+            if (recipe == null)
+            {
+                return HttpNotFound();
+            }
+            
+            return View(recipe);
         }
         public ActionResult About()
         {

@@ -1,0 +1,50 @@
+﻿@model EP3_ICE_CREAM.Models.Recipe
+
+@{
+    ViewBag.Title = "RecipeDetails";
+    Layout = "~/Views/Shared/_LayoutHomePage.cshtml";
+}
+
+<section class="ftco-section ftco-degree-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 ftco-animate">
+
+                <h2 class="mb-3">  @Model.Recipe_title</h2>
+                
+                <p>
+                    <img style="height:400px;width:500px" class="p-2" src="~/Uploads/Recipes/@Model.Recipe_image" />
+                </p>
+                <p>Molestiae cupiditate inventore animi, maxime sapiente optio, illo est nemo veritatis repellat sunt doloribus nesciunt! Minima laborum magni reiciendis qui voluptate quisquam voluptatem soluta illo eum ullam incidunt rem assumenda eveniet eaque sequi deleniti tenetur dolore amet fugit perspiciatis ipsa, odit. Nesciunt dolor minima esse vero ut ea, repudiandae suscipit!</p>
+                
+                <p>Temporibus ad error suscipit exercitationem hic molestiae totam obcaecati rerum, eius aut, in. Exercitationem atque quidem tempora maiores ex architecto voluptatum aut officia doloremque. Error dolore voluptas, omnis molestias odio dignissimos culpa ex earum nisi consequatur quos odit quasi repellat qui officiis reiciendis incidunt hic non? Debitis commodi aut, adipisci.</p>
+
+
+
+                <div class="about-author d-flex p-4 bg-light">
+
+                    <div class="desc align-self-md-center">
+
+                        <p>@Model.Recipe_procedure</p>
+                    </div>
+                    <div class="desc align-self-md-center">
+                        <h3>description</h3>
+                        <p>@Model.Recipe_ingredients</p>
+                    </div>
+                </div>
+
+
+            <p>Author :<h3>@Model.Recipe_Author</h3></p>
+            </div> <!-- .col-md-8 -->
+            <div class="col-lg-4 sidebar ftco-animate">
+
+
+                <div class="sidebar-box ftco-animate">
+                    <h3 class="heading">Paragraph</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section> <!-- .section -->
