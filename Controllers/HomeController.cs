@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
+using PagedList;
+
 
 namespace EP3_ICE_CREAM.Controllers
 {
@@ -14,9 +16,10 @@ namespace EP3_ICE_CREAM.Controllers
         public ActionResult Index()
         {
             ViewBag.banner = db.Banners.OrderByDescending(s => s.id).Take(3).ToList();
-            ViewBag.sanphambanchay = db.Books.OrderByDescending(s => s.quantity_sold).Take(12).ToList();
-            ViewBag.sanphammoinhat = db.Books.OrderByDescending(s => s.created).Take(12).ToList();
-            ViewBag.giamgiathapnhat = db.Books.OrderByDescending(s => s.discount).Take(3).ToList();
+            ViewBag.flavor =db.Flavors.OrderByDescending(s => s.id).Take(8).ToList();
+            ViewBag.sold = db.Books.OrderByDescending(s => s.quantity_sold).Take(12).ToList();
+            ViewBag.newbook = db.Books.OrderByDescending(s => s.created).Take(7).ToList();
+            ViewBag.discountmax = db.Books.OrderByDescending(s => s.discount).Take(3).ToList();
             return View(db.Books.ToList().Take(12));
         }
 
@@ -92,7 +95,20 @@ namespace EP3_ICE_CREAM.Controllers
             tempp._checked = _checked;
             return tempp;
         }
+        public ActionResult Shop(int? page)
+        {
 
+            ViewBag.Flavor_id = new SelectList(db.Flavors, "Flavor_id", "Flavor_title");
+
+
+
+            var book = db.Books.OrderByDescending(s => s.id).ToList();
+            if (page == null) page = 1;
+            int pageSize = 7;
+            int pageNumber = (page ?? 1);
+            return View(book.ToPagedList(pageNumber, pageSize));
+
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

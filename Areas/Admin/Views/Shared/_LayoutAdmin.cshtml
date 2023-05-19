@@ -57,7 +57,7 @@
                     </div>
                 </div>
             </li>
-           
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm" aria-expanded="true"
                    aria-controls="collapseForm">
@@ -86,11 +86,52 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="ui-colors.html">
-                    <i class="fas fa-fw fa-palette"></i>
-                    <span>UI Colors</span>
+
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTableRecipe" aria-expanded="true"
+                   aria-controls="collapseTableRecipe">
+                    <i class="fas fa-fw fa-birthday-cake"></i>
+                    <span>Recipe</span>
                 </a>
+                <div id="collapseTableRecipe" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Recipe</h6>
+                        @Html.ActionLink("View All", "Index", "Recipe", null, new { @class = "collapse-item" })
+                    </div>
+                </div>
             </li>
+            <li class="nav-item">
+
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTableBook" aria-expanded="true"
+                   aria-controls="collapseTableBook">
+                    <i class="fas fa-fw fa-book-open"></i>
+                    <span>Book</span>
+                </a>
+                <div id="collapseTableBook" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Book</h6>
+                        @Html.ActionLink("View All", "Index", "Book", null, new { @class = "collapse-item" })
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTableContact" aria-expanded="true"
+                   aria-controls="collapseTableContact">
+                    <i class="fas fa-fw fa-mail-forward"></i>
+                    <span>Contact</span>
+                </a>
+                <div id="collapseTableContact" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Contact</h6>
+                        @Html.ActionLink("View All", "Index", "Contact", null, new { @class = "collapse-item" })
+                    </div>
+                </div>
+            </li>
+
+
             <hr class="sidebar-divider">
             <div class="sidebar-heading">
                 Examples
