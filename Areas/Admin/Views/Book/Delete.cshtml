@@ -1,0 +1,143 @@
+﻿@model EP3_ICE_CREAM.Models.Book
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<main class="cc">
+    <div class="container-fluid p-0">
+
+        <div class="mb-3">
+            <h1 class="h3 d-inline align-middle">Danh sách khách hàng</h1>
+
+        </div>
+        <div class="row">
+            <div class="col-md-9 col-xl-10">
+                @if (Request.UrlReferrer != null)
+                {
+                    <button class="btn btn-outline-info" onclick="history.go(-1); return false;" id="hien">
+                        <i class="fas fa-backward"></i>
+                    </button>
+                    //  <a class="bottomNav" onclick="history.go(-1); return false;" href="#">Back</a><br />
+                }
+
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-12 col-xl-12">
+                <div class="tab-content">
+
+
+                    <div class="card">
+                        <div class="card-body">
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="row">
+                                <div class="col-md-8">
+
+                                    <div class="mb-3">
+
+                                        <div class="mb-3">
+                                            <label class="form-label">@Model.Book_id</label>
+                                            <input type="hidden" class="form-control" id="Book_id" name="Book_id" placeholder="Tên sản phẩm" value="@Model.Book_id">
+                                        </div>
+                                        <label class="form-label">Danh mục</label>
+                                        @Html.DropDownList("Flavor_id", null, htmlAttributes: new { @id = "Flavor_id", @class = "form-control" })
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">titleBook</label>
+                                        <input type="text" class="form-control" id="titleBook" name="titleBook" placeholder="Tên sản phẩm" value="@Model.titleBook">
+                                    </div>
+                                    <div class="row">
+                                        <div class="mb-3 col-md-4">
+                                            <label class="form-label">author</label>
+                                            <input type="text" class="form-control" id="author" name="author" value="@Model.author">
+                                        </div>
+                                        <div class="mb-3 col-md-4">
+                                            <label class="form-label">quantity</label>
+                                            <input type="text" class="form-control" id="quantity" name="quantity" value="@Model.quantity">
+                                        </div>
+                                        <div class="mb-3 col-md-4">
+                                            <label class="form-label">quantity_sold</label>
+                                            <input type="text" class="form-control" id="quantity_sold" name="quantity_sold" value="@Model.quantity_sold">
+                                        </div>
+                                        <div class="mb-3 col-md-4">
+                                            <label class="form-label">discount</label>
+                                            <input type="text" class="form-control" id="discount" name="discount" value="@Model.discount">
+                                        </div>
+                                        <div class="mb-3 col-md-4">
+                                            <label class="form-label">priceBook</label>
+                                            <input type="text" class="form-control" id="priceBook" name="priceBook" value="@Model.priceBook">
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label" for="content">content</label>
+
+                                        <textarea rows="4" class="form-control " id="content" name="content"
+                                                  placeholder="content">@Model.content</textarea>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="text-center">
+                                        @*<img alt="" src="img/avatars/avatar.jpg" class="rounded-circle img-responsive mt-2"
+                                                 width="128" height="128" />
+                                            <div class="mt-2">
+                                                <span class="btn btn-primary"><i class="fas fa-upload"></i> Upload</span>
+                                            </div>*@
+                                        <div class="mb-3">
+                                            <label class="form-label">Image</label>
+                                            <img src="~/Uploads/Books/@Model.bookImage" class=" my-n1 img-product" alt="Image-Product" />
+
+                                            <br />
+                                            <div class="style_displayImg" id="displayImg"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-danger" />
+
+    </div>
+}
+<script type="text/javascript">
+    function ImagesFileAsURL() {
+        var fileSelected = document.getElementById('img').files;
+        if (fileSelected.length > 0) {
+            var fileToLoad = fileSelected[0];
+            var fileReader = new FileReader();
+            fileReader.onload = function (fileLoaderEvent) {
+                var srcData = fileLoaderEvent.target.result;
+                var newImage = document.createElement('img');
+                newImage.src = srcData;
+                document.getElementById('displayImg').innerHTML = newImage.outerHTML;
+            }
+            fileReader.readAsDataURL(fileToLoad);
+        }
+    }
+
+    //
+
+    //// nếu chọn đơn hàng đã giao thì hẩn đang giao
+    //document.getElementById("hien").onclick = function () {
+    //    document.getElementById("hiddendiv").style.display = 'block';// hiện
+    //};</script>
+
+
