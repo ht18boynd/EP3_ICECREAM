@@ -15,6 +15,7 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
     {
         private EP_ICECREAMEntities db = new EP_ICECREAMEntities();
         // GET: Admin/Book
+        // bao
         public ActionResult Index(int? page)
         {
             ViewBag.Flavor_id = new SelectList(db.Flavors, "Flavor_id", "Flavor_title");
@@ -28,7 +29,7 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
             int pageNumber = (page ?? 1);
             return View(book.ToPagedList(pageNumber, pageSize));
         }
-        
+
         public ActionResult Create()
         {
 
@@ -37,10 +38,10 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        
+
 
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Book book, HttpPostedFileBase img, string titleBook, string content, string Flavor_id, string author, int priceBook,int discount, int quantity,int quantity_sold)
+        public ActionResult Create(Book book, HttpPostedFileBase img, string titleBook, string content, string Flavor_id, string author, int priceBook, int discount, int quantity, int quantity_sold)
         {
             ViewBag.Flavor_id = new SelectList(db.Flavors, "Flavor_id", "Flavor_title", book.Flavor_id);
 
@@ -63,7 +64,7 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
             {
                 book.bookImage = "null.jpg";
             }
-            book.content = content;         
+            book.content = content;
             book.author = author;
             string Book_id = DateTime.Now.ToString("yyyyMMddHHmmss") + "recipes";
             book.Book_id = Book_id;
@@ -145,7 +146,7 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
 
                 book.content = content;
                 book.author = author;
-                
+
                 book.Book_id = book_id;
                 book.Flavor_id = Flavor_id;
                 book.titleBook = titleBook;
