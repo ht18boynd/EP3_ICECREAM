@@ -1,0 +1,234 @@
+﻿@model EP3_ICE_CREAM.Models.Book
+
+@{
+    ViewBag.Title = "Books_Details";
+    Layout = "~/Views/Shared/_LayoutHomePage.cshtml";
+}
+
+<div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center">
+                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="index.html">book</a></span> <span>book Single</span></p>
+                <h1 class="mb-0 bread">book Single</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-5 ftco-animate">
+                <img src="~/Uploads/Books/@Model.bookImage" alt="book-thumb">
+                <input type="hidden" name="id_book" id="id_book" value="@Model.Book_id" />
+
+
+            </div>
+            <div class="col-lg-6 book-details pl-md-5 ftco-animate">
+                <h3>@Model.titleBook</h3>
+                <div class="rating d-flex">
+                    <p class="text-left mr-4">
+                        <a href="#" class="mr-2">5.0</a>
+                        <a href="#"><span class="ion-ios-star-outline"></span></a>
+                        <a href="#"><span class="ion-ios-star-outline"></span></a>
+                        <a href="#"><span class="ion-ios-star-outline"></span></a>
+                        <a href="#"><span class="ion-ios-star-outline"></span></a>
+                        <a href="#"><span class="ion-ios-star-outline"></span></a>
+                    </p>
+                    <p class="text-left mr-4">
+                        <a href="#" class="mr-2" style="color: #000;">100 <span style="color: #bbb;">Rating</span></a>
+                    </p>
+                    <p class="text-left">
+                        <a href="#" class="mr-2" style="color: #000;">@Model.quantity_sold <span style="color: #bbb;">Sold</span></a>
+                    </p>
+                </div>
+                @{ var priceAfter = Model.priceBook - (Model.priceBook * Model.discount / 100); }
+
+                <p class="price"><span>$@priceAfter</span></p>
+
+                <ins class="text-danger">$@Model.priceBook</ins>
+                <p>
+                    A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until.
+                </p>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="form-group d-flex">
+                            <div class="select-wrap">
+                                <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                <select name="" id="" class="form-control">
+                                    <option value="">Small</option>
+                                    <option value="">Medium</option>
+                                    <option value="">Large</option>
+                                    <option value="">Extra Large</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="input-group col-md-6 d-flex mb-3">
+                        <span class="input-group-btn mr-2">
+                            <button type="button" class="quantity-left-minus btn" data-type="minus" data-field="">
+                                <i class="ion-ios-remove"></i>
+                            </button>
+                        </span>
+                        <input type="number" id="soluong" name="soluong" class="form-control input-number" value="1" min="1" max="100">
+                        <span class="input-group-btn ml-2">
+                            <button class="count-btn increment"><i class="fas fa-chevron-up"></i></button>
+                            <button class="count-btn decrement"><i class="fas fa-chevron-down"></i></button>
+                        </span>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-md-12">
+                        <p style="color: #000;">@Model.Flavor_id</p>
+                    </div>
+                </div>
+                <div>
+                    <button class="btn theme-btn--dark3 btn--xl mt-5 mt-sm-0 rounded-5" name="MUA">
+                        <span class="mr-2"><i class="ion-android-add"></i></span>
+                        Add To Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center mb-3 pb-3">
+            <div class="col-md-12 heading-section text-center ftco-animate">
+                <span class="subheading">books</span>
+                <h2 class="mb-4">Related books</h2>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="row">
+                @{
+                    if (ViewBag.booksample != null)
+                    {
+
+                        foreach (var item in ViewBag.booksample)
+                        {
+                            <div class="col-md-6 col-lg-3 ftco-animate">
+                                <div class="book">
+                                    <a href="~/Home/Books_Details/@item.Book_id">
+                                        <img class="img-fluid" src="~/Uploads/Books/@item.bookImage" alt="Colorlib Template" style="width: 300px; height: 300px;">
+                                        <span class="status">@item.discount %</span>
+                                        <div class="overlay"></div>
+                                    </a>
+                                    <div class="text py-3 pb-4 px-3 text-center">
+                                        <h3><a href="#">@item.titleBook</a></h3>
+                                        <div class="d-flex">
+                                            <div class="pricing">
+                                                @{ var priceAfterSample = item.priceBook - (item.priceBook * item.discount / 100); }
+                                                <p class="price"><span class="mr-2 price-dc">$@item.priceBook</span><span class="price-sale"> $@priceAfterSample</span></p>
+                                            </div>
+                                        </div>
+                                        <div class="bottom-area d-flex px-3">
+                                            <div class="m-auto d-flex">
+                                                <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                                                    <span><i class="ion-ios-menu"></i></span>
+                                                </a>
+                                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                                    <span><i class="ion-ios-cart"></i></span>
+                                                </a>
+                                                <a href="#" class="heart d-flex justify-content-center align-items-center ">
+                                                    <span><i class="ion-ios-heart"></i></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    }
+                }
+                <div class="col-md-6 col-lg-3 ftco-animate">
+                    <div class="book">
+                        Commimg soon...
+
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="mb-3 " id="mytable2" style="
+    position: fixed;
+    top: 29%;
+    left: 45%;
+    z-index: 1050;
+    display: none;
+    width: 270px;
+    height: auto;
+    overflow: hidden;
+    outline: 0;">
+    <div class="alert alert-success" role="alert" style="margin-bottom:0;">
+        <div class="alert-message" style="text-align:center">
+            <h4 class="alert-heading">MUA THÀNH CÔNG</h4>
+            <p>
+                Success
+            </p>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $(document).on('click', "button[name='MUA']", function () {
+
+            Swal.fire({
+                title: 'Bạn muốn mua sản phảm này',
+                icon: 'warning',
+                showCancelButton: true,
+                cancelButtonText:'<i class="fas fa-times"></i>',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '<i class="fas fa-check"></i>'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    // lấy id sản phẩm
+                    var _soluong = $("#soluong").val();
+                    var _id_book = $("#id_book").val();
+                    console.log("soluong:" + _soluong + "-id:" + _id_book);
+                    $.ajax({
+                        url: '/Home/Buy_book_Details',
+                        type: 'post',
+                        data: {
+                            id: _id_book,
+                            soluong: _soluong
+                        },
+                        success: function (data) {
+                            if (data.code == 200) {
+                                location.reload();
+                                Swal.fire(
+                                    'Thêm thành công!'
+                                )
+
+
+                            } else {
+                                alert("Loi");
+                                console.log(data.msg);
+                            }
+                        }
+                    });
+
+                }
+            })
+        });</script>
+
+
+
+
+}
+

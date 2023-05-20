@@ -1,0 +1,191 @@
+﻿@using EP3_ICE_CREAM.Models;
+
+@{
+    ViewBag.Title = "ViewCartShopping";
+    Layout = "~/Views/Shared/_LayoutHomePage.cshtml";
+    List<EP3_ICE_CREAM.Models.Cart> Cart = Session["cart"] as List<EP3_ICE_CREAM.Models.Cart>;
+    int tamtinh = 0;
+}
+<style>
+    .txt_sl {
+        color: #1d1d1d;
+        background-color: #fff;
+        width: 80px;
+        border: 1px solid #ebebeb;
+        display: block;
+        text-align: center;
+    }
+</style>
+
+<div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center">
+                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Cart</span></p>
+                <h1 class="mb-0 bread">My Cart</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="ftco-section ftco-cart">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 ftco-animate">
+                <div class="cart-list">
+                    <table class="table">
+                        <thead class="thead-primary">
+                            <tr class="text-center">
+                                <th>&nbsp;</th>
+                                <th>&nbsp;</th>
+                                <th>book name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                if (Cart == null)
+                                {
+                                    <tr>
+                                        <td> Chưa có sản phẩm</td>
+                                    </tr>
+
+
+                                }
+                                else
+                                {
+                                    foreach (var item in Cart)
+                                    {
+                                        tamtinh += item._sum;
+                                        using (Html.BeginForm("UpdateCartItem", "Home", new { id = item._book_id }, FormMethod.Post))
+                                        {
+                                            <tr>
+                                                <th class="text-center">
+
+                                                    <input type="checkbox" name="id_sanpham" value="@item._book_id" checked="@item._check" />
+                                                </th>
+                                                <th class="text-center" scope="row">
+                                                    <a href="~/Home/book_Details/@item._book_id">
+                                                        <img class="book-image-main" style="width:80px;height:80px" src="~/Uploads/books/@item._image_main" alt="thumbnail">
+                                                    </a>
+                                                </th>
+                                                <td class="text-center" style="max-width:280px">
+                                                    <span class="whish-title">@item._book_name</span>
+                                                </td>
+                                                <td class="text-center">
+                                                    @*  <span class="badge badge-danger position-static">In Stock</span>*@
+                                                    @item._price.ToString("N0") đ
+                                                </td>
+                                                <td class="text-center">
+                                                    <input class="txt_sl" type="number" name="quantity" id="quantity" min="1" step="1" value="@item._quantity">
+                                                </td>
+                                                <td class="text-center">
+                                                    <span class="whish-list-price">
+                                                        @item._sum.ToString("N0") đ
+                                                    </span>
+                                                </td>
+                                                <td class="text-center">
+                                                    <div style="display:flex;height:100%;width:100%;align-items:center;">
+                                                        <a class="btn btn-danger" href="~/Home/DeleteCartItem/@item._book_id"><i class="fas fa-times"></i></a>&nbsp;
+                                                        <button class="btn btn-info" type="submit"><i class="fas fa-check"></i></button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+
+
+
+                                    }
+
+                                }
+                            }
+
+                            <
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-end">
+            <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
+                <div class="cart-total mb-3">
+                    <h3>Coupon Code</h3>
+                    <p>Enter your coupon code if you have one</p>
+                    <form action="#" class="info">
+                        <div class="form-group">
+                            <label for="">Coupon code</label>
+                            <input type="text" class="form-control text-left px-3" placeholder="">
+                        </div>
+                    </form>
+                </div>
+                <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Apply Coupon</a></p>
+            </div>
+            <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
+                <div class="cart-total mb-3">
+                    <h3>Estimate shipping and tax</h3>
+                    <p>Enter your destination to get a shipping estimate</p>
+                    <form action="#" class="info">
+                        <div class="form-group">
+                            <label for="">Country</label>
+                            <input type="text" class="form-control text-left px-3" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="country">State/Province</label>
+                            <input type="text" class="form-control text-left px-3" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Zip/Postal Code</label>
+                            <input type="text" class="form-control text-left px-3" placeholder="">
+                        </div>
+                    </form>
+                </div>
+                <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Estimate</a></p>
+            </div>
+            <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
+                <div class="cart-total mb-3">
+                    <h3>Cart Totals</h3>
+                    <p class="d-flex">
+                        <span>Subtotal</span>
+                        <span>$20.60</span>
+                    </p>
+                    <p class="d-flex">
+                        <span>Delivery</span>
+                        <span>$0.00</span>
+                    </p>
+                    <p class="d-flex">
+                        <span>Discount</span>
+                        <span>$3.00</span>
+                    </p>
+                    <hr>
+                    <p class="d-flex total-price">
+                        <span>Total</span>
+                        <span>$17.60</span>
+                    </p>
+                </div>
+                <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
+    <div class="container py-4">
+        <div class="row d-flex justify-content-center py-5">
+            <div class="col-md-6">
+                <h2 style="font-size: 22px;" class="mb-0">Subcribe to our Newsletter</h2>
+                <span>Get e-mail updates about our latest shops and special offers</span>
+            </div>
+            <div class="col-md-6 d-flex align-items-center">
+                <form action="#" class="subscribe-form">
+                    <div class="form-group d-flex">
+                        <input type="text" class="form-control" placeholder="Enter email address">
+                        <input type="submit" value="Subscribe" class="submit px-3">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

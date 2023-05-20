@@ -12,13 +12,21 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
         private EP_ICECREAMEntities db = new EP_ICECREAMEntities();
 
         // GET: Admin/Admin
+
         public ActionResult Index()
         {
             //Phân Quyền Login
+            if (Session["Login"] != null)
+            {
+
+                return View();
+            }
+            else { return RedirectToAction("LoginAdmin"); }
+
 
             
-            return View();
         }
+      
 
         public ActionResult LoginAdmin()
         {
@@ -33,6 +41,7 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
                 if (ad_t != null)
                 {
                     Session["Login"] = ad_t.id.ToString();
+                    Session["Succses"] = 1;
                     return Json(new { code = 200, url = Url.Action("Index", "Admin"), msg = "Thanh công", }, JsonRequestBehavior.AllowGet);
                 }
                 else
@@ -49,6 +58,7 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
         public ActionResult Logout()
         {
             Session["Logout"] = 1;
+            Session.Remove("Login");
             return RedirectToAction("LoginAdmin");
         }
 

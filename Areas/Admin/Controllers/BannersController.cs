@@ -20,21 +20,30 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
         // GET: Admin/Banners
         public ActionResult Index(int? page)
         {
-            
-            
-            System.IO.File.Copy(Server.MapPath("/Uploads/ImgNull/null.png"), Path.Combine(Server.MapPath("/Uploads/Banners/null.png")), true);
+            if (Session["Login"] != null)
+            {
+
+                System.IO.File.Copy(Server.MapPath("/Uploads/ImgNull/null.png"), Path.Combine(Server.MapPath("/Uploads/Banners/null.png")), true);
+
+                var banner = db.Banners.OrderByDescending(s => s.id).ToList();
+                if (page == null) page = 1;
+                int pageSize = 5;
+                int pageNumber = (page ?? 1);
+                return View(banner.ToPagedList(pageNumber, pageSize));
+            }
+            else { 
+                return RedirectToAction("LoginAdmin", "Admin"); 
+            }
+
            
-            var banner = db.Banners.OrderByDescending(s=> s.id).ToList();
-            if (page == null) page = 1;
-            int pageSize = 5;
-            int pageNumber = (page ?? 1);
-            return View(banner.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Admin/Banners/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            if (Session["Login"] != null)
+            {
+                if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -44,6 +53,8 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
                 return HttpNotFound();
             }
             return View(banner);
+            }
+            else { return RedirectToAction("LoginAdmin","Admin"); }
         }
 
         // GET: Admin/Banners/Create
@@ -56,38 +67,44 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Banner banner, HttpPostedFileBase img, string Banner_name)
         {
-            string _path = Server.MapPath("~/Uploads/Banners/");
-            if (!Directory.Exists(_path))
+            if (Session["Login"] != null)
             {
-                Directory.CreateDirectory(_path);
-            }
-            if (img != null)
-            {
-                string newFileName = DateTime.Now.Millisecond.ToString() + DateTime.Now.ToString("yyyyMMddHHmmss") + "Danhmuc" + ".jpg";
-                string path0 = Path.Combine(_path + newFileName);
-                img.SaveAs(path0);
-                banner.Banner_image = newFileName;
-                banner.slug= $"/"+newFileName;
-            }
-            else
-            {
-                banner.Banner_image = "null.jpg";
-            }
-            banner.Banner_name = Banner_name;
-           
+
+                string _path = Server.MapPath("~/Uploads/Banners/");
+                if (!Directory.Exists(_path))
+                {
+                    Directory.CreateDirectory(_path);
+                }
+                if (img != null)
+                {
+                    string newFileName = DateTime.Now.Millisecond.ToString() + DateTime.Now.ToString("yyyyMMddHHmmss") + "Danhmuc" + ".jpg";
+                    string path0 = Path.Combine(_path + newFileName);
+                    img.SaveAs(path0);
+                    banner.Banner_image = newFileName;
+                    banner.slug = $"/" + newFileName;
+                }
+                else
+                {
+                    banner.Banner_image = "null.jpg";
+                }
+                banner.Banner_name = Banner_name;
+
                 db.Banners.Add(banner);
                 db.SaveChanges();
 
-            Session["Create"] = banner.id.ToString();
+                Session["Create"] = banner.id.ToString();
 
-            return RedirectToAction("Index");
-
-        }
+                return RedirectToAction("Index");
+            }
+            else { return RedirectToAction("LoginAdmin", "Admin"); }
+            }
 
         // GET: Admin/Banners/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            if (Session["Login"] != null)
+            {
+                if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -97,6 +114,8 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
                 return HttpNotFound();
             }
             return View(banner);
+            }
+            else { return RedirectToAction("LoginAdmin", "Admin"); }
         }
 
         // POST: Admin/Banners/Edit/5
@@ -169,7 +188,9 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
         // GET: Admin/Banners/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            if (Session["Login"] != null)
+            {
+                if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -179,6 +200,8 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
                 return HttpNotFound();
             }
             return View(banner);
+            }
+            else { return RedirectToAction("LoginAdmin", "Admin"); }
         }
 
         // POST: Admin/Banners/Delete/5

@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 
@@ -80,11 +81,11 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
             {
                 db.Books.Add(book);
                 db.SaveChanges();
+                Session["Create"] = book.id.ToString();
                 return RedirectToAction("Index");
             }
 
 
-            Session["Create"] = book.id.ToString();
             ViewBag.Flavor_id = new SelectList(db.Flavors, "Flavor_id", "Flavor_title", book.Flavor_id);
             return View(book);
         }
@@ -161,8 +162,11 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
                 {
                     db.Entry(book).State = EntityState.Modified;
                     db.SaveChanges();
+                    Session["Edit"] = 1;
+
                     return RedirectToAction("Index");
                 }
+                Session["Edit"] = 1;
                 ViewBag.Flavor_id = new SelectList(db.Flavors, "Flavor_id", "Flavor_title", book.Flavor_id);
                 return RedirectToAction("Index");
             }
@@ -208,6 +212,8 @@ namespace EP3_ICE_CREAM.Areas.Admin.Controllers
             ViewBag.Flavor_id = new SelectList(db.Flavors, "Flavor_id", "Flavor_title", book.Flavor_id);
 
             db.Books.Remove(book);
+            Session["Delete"] = book.id.ToString();
+
             db.SaveChanges();
             return RedirectToAction("Index");
         }

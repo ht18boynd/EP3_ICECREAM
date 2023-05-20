@@ -7,6 +7,7 @@ using System.Web.Helpers;
 using System.Web.Mvc;
 using PagedList;
 using System.Net;
+using System.Web.UI.WebControls.WebParts;
 
 namespace EP3_ICE_CREAM.Controllers
 {
@@ -109,6 +110,85 @@ namespace EP3_ICE_CREAM.Controllers
             return View(book.ToPagedList(pageNumber, pageSize));
 
         }
+        public ActionResult Books_Details(string id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                var item = db.Books.Find(id);
+                //Sẩn phẩm cùng loại
+                ViewBag.booksample = db.Books.Where(s => s.Flavor_id == item.Flavor_id).ToList().Take(4);
+                ViewBag.sanphamkhacloai = db.Books.Where(s => s.Flavor_id != item.Flavor_id).ToList().Take(4);
+                ViewBag.Flavor_id = new SelectList(db.Flavors, "Flavor_id", "Flavor_title");
+
+                return View(item);
+            }
+
+        }
+        // Mua sản phẩm trong details
+        [HttpPost]
+        public JsonResult Buy_book_Details(string id, string soluong)
+        {
+            try
+            {
+                if (Session["cart"] == null) // Nếu giỏ hàng chưa được khởi tạo
+                {
+                    Session["cart"] = new List<EP3_ICE_CREAM.Models.Cart>();  // Khởi tạo Session["giohang"] là 1 List<Giohang>
+                }
+                if (id != null || soluong != null)
+                {
+                    var book_item = db.Books.Find(id);
+                    if (book_item != null)
+                    {
+                        List<EP3_ICE_CREAM.Models.Cart> cart = Session["cart"] as List<EP3_ICE_CREAM.Models.Cart>;
+                        if (cart.Where(s => s._book_id == id).FirstOrDefault() == null) // ko co sp nay trong gio hang
+                        {
+                            Book sanpham = db.Books.Find(id);  // tim sp theo sanPhamID
+
+                            EP3_ICE_CREAM.Models.Cart newItem = new EP3_ICE_CREAM.Models.Cart()
+                            {
+                                _book_id = id.ToString(),
+                                _book_name = sanpham.titleBook,
+
+                                _quantity_max = (int)sanpham.quantity,
+                                _image_main = sanpham.bookImage,
+                                _price = (int)sanpham.priceBook,
+                                _quantity = int.Parse(soluong)
+
+                            };  // Tạo ra 1 CartItem mới
+
+                            cart.Add(newItem);  // Thêm CartItem vào giỏ 
+                        }
+                        else
+                        {
+                            // Nếu sản phẩm khách chọn đã có trong giỏ hàng thì không thêm vào giỏ nữa mà tăng số lượng lên.
+                            EP3_ICE_CREAM.Models.Cart cardItem = cart.FirstOrDefault(m => m._book_id == id);
+                            cardItem._quantity += int.Parse(soluong);
+                        }
+                    }
+                    return Json(new { code = 200, url = Url.Action("ViewCartShopping", "Home"), msg = "Mua thành công" }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new { code = 500, msg = "Không thành công" }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { code = 500, msg = "Mua lỗi" + ex }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        public ActionResult ViewCartShopping()//Hiển trị giỏ hàng
+        {
+            // Xóa Session["cart_temp"]
+            Session["cart_temp"] = null;
+            List<EP3_ICE_CREAM.Models.Cart> Cart = Session["cart"] as List<EP3_ICE_CREAM.Models.Cart>;
+            ViewBag.Cart = Cart;
+            return View();
+        }
         public ActionResult Recipe(int? page)
         {
 
@@ -139,7 +219,7 @@ namespace EP3_ICE_CREAM.Controllers
         }
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.blog = db.Blogs.ToList();
             return View();
         }
 

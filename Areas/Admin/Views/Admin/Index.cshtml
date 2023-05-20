@@ -4,7 +4,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-@if (Session["Login"] != null)
+@if (Session["Succses"] != null)
 {
     <script>
         Swal.fire({
@@ -15,7 +15,7 @@
             timer: 1600
         })
     </script>
-    Session.Remove("Login");
+    Session.Remove("Succses");
 }
 
 <!-- Container Fluid-->
