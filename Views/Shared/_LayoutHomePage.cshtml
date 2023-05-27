@@ -89,7 +89,8 @@
                         <div class="dropdown-menu" aria-labelledby="dropdown04">
                             @Html.ActionLink("Shop", "Shop", "Home", null, new { @class = "dropdown-item" })
 
-                            <a class="dropdown-item" href="cart.html">Cart</a>
+                            @Html.ActionLink("Cart", "ViewCartShopping", "Home", null, new { @class = "dropdown-item" })
+
                             <a class="dropdown-item" href="checkout.html">Checkout</a>
                         </div>
                     </li>
@@ -169,10 +170,9 @@
                     <div class="ftco-footer-widget mb-4 ml-md-5">
                         <h2 class="ftco-heading-2">Menu</h2>
                         <ul class="list-unstyled">
-                            <li><a href="#" class="py-2 d-block">Shop</a></li>
-                            <li><a href="#" class="py-2 d-block">About</a></li>
-                            <li><a href="#" class="py-2 d-block">Journal</a></li>
-                            <li><a href="#" class="py-2 d-block">Contact Us</a></li>
+                            <li><a href="~/Home/Shop" class="py-2 d-block">Shop</a></li>
+                            <li><a href="~/Home/About" class="py-2 d-block">About</a></li>
+                            <li><a href="~/Home/Contact" class="py-2 d-block">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -198,9 +198,9 @@
                         <h2 class="ftco-heading-2">Have a Questions?</h2>
                         <div class="block-23 mb-3">
                             <ul>
-                                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-                                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-                                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+                                <li><span class="icon icon-map-marker"></span><span class="text">590, CMT8, Phường 11, Q.3, Tp. Hồ Chí Minh</span></li>
+                                <li><a href="#"><span class="icon icon-phone"></span><span class="text"> (HCM) 028 7300 8866 - 0931 313 329</span></a></li>
+                                <li><a href="#"><span class="icon icon-envelope"></span><span class="text"> aptech.fpt@fe.edu.vn </span></a></li>
                             </ul>
                         </div>
                     </div>

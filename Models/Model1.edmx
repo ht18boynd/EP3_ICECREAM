@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EP_ICECREAMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="EP_ICECREAMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admins">
           <Key>
             <PropertyRef Name="id" />
@@ -50,6 +50,14 @@
           <Property Name="quantity_sold" Type="int" />
           <Property Name="status" Type="int" />
           <Property Name="created" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="brand_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="image" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Contact">
           <Key>
@@ -117,7 +125,7 @@
           <Property Name="address" Type="varchar(max)" Nullable="false" />
           <Property Name="avatar" Type="varchar" MaxLength="100" />
           <Property Name="payfor" Type="int" Nullable="false" />
-          <Property Name="created" Type="smalldatetime" />
+          <Property Name="created" Type="datetime" />
         </EntityType>
         <EntityType Name="Review">
           <Key>
@@ -241,6 +249,7 @@
           <EntitySet Name="Banner" EntityType="Self.Banner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Blog" EntityType="Self.Blog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Flavor" EntityType="Self.Flavor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
@@ -275,8 +284,7 @@
             <End Role="Review" EntitySet="Review" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EP_ICECREAMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -399,7 +407,7 @@
           <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="avatar" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="payfor" Type="Int32" Nullable="false" />
-          <Property Name="created" Type="DateTime" Precision="0" />
+          <Property Name="created" Type="DateTime" Precision="3" />
           <NavigationProperty Name="PaymentForRegisterdUsers" Relationship="Self.FK__PaymentFo__Regis__2A4B4B5E" FromRole="RegisteredUser" ToRole="PaymentForRegisterdUser" />
           <NavigationProperty Name="Reviews" Relationship="Self.FK__Review__Register__36B12243" FromRole="RegisteredUser" ToRole="Review" />
         </EntityType>
@@ -561,7 +569,16 @@
             <End Role="Visitor" EntitySet="Visitors" />
             <End Role="Review" EntitySet="Reviews" />
           </AssociationSet>
+          <EntitySet Name="Brands" EntityType="EP_ICECREAMModel.Brand" />
         </EntityContainer>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="brand_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="image" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -737,6 +754,15 @@
                 <ScalarProperty Name="fullName" ColumnName="fullName" />
                 <ScalarProperty Name="address" ColumnName="address" />
                 <ScalarProperty Name="phone" ColumnName="phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="EP_ICECREAMModel.Brand">
+              <MappingFragment StoreEntitySet="Brand">
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="brand_Name" ColumnName="brand_Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

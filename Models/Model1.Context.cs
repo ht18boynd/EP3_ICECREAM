@@ -38,5 +38,6 @@ namespace EP3_ICE_CREAM.Models
         public DbSet<Review> Reviews { get; set; }
         public DbSet<transaction> transactions { get; set; }
         public DbSet<Visitor> Visitors { get; set; }
+        public DbSet<Brand> Brands { get; set; }
     }
 }

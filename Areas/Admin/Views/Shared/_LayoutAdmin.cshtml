@@ -130,34 +130,51 @@
                     </div>
                 </div>
             </li>
+            <li class="nav-item">
+
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTableBlog" aria-expanded="true"
+                   aria-controls="collapseTableBlog">
+                    <i class="fas fa-fw fa-mail-forward"></i>
+                    <span>Blog Members</span>
+                </a>
+                <div id="collapseTableBlog" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Blog Members</h6>
+                        @Html.ActionLink("View All", "Index", "Blog", null, new { @class = "collapse-item" })
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTableBrand" aria-expanded="true"
+                   aria-controls="collapseTableBrand">
+                    <i class="fas fa-fw fa-code-branch"></i>
+                    <span>List Brands</span>
+                </a>
+                <div id="collapseTableBrand" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">List Brands</h6>
+                        @Html.ActionLink("View All", "Index", "Brand", null, new { @class = "collapse-item" })
+                    </div>
+                </div>
+            </li>
 
 
             <hr class="sidebar-divider">
             <div class="sidebar-heading">
                 Examples
             </div>
+
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePage" aria-expanded="true"
-                   aria-controls="collapsePage">
-                    <i class="fas fa-fw fa-columns"></i>
-                    <span>Pages</span>
-                </a>
-                <div id="collapsePage" class="collapse" aria-labelledby="headingPage" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Example Pages</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="~/Home/Index">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span>
+                    <span>Home</span>
                 </a>
             </li>
+
+
             <hr class="sidebar-divider">
             <div class="version" id="version-ruangadmin"></div>
         </ul>

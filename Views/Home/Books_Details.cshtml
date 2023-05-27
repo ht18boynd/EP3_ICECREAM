@@ -5,6 +5,52 @@
     Layout = "~/Views/Shared/_LayoutHomePage.cshtml";
 }
 
+@if (Session["AddtoCart"] != null)
+{
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'success',
+            title: 'Add To Cart successfully'
+        })
+    </script>
+    Session.Remove("AddtoCart");
+}
+
+@if (Session["UpdatetoCart"] != null)
+{
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'success',
+            title: 'Add To Cart successfully'
+        })
+    </script>
+    Session.Remove("UpdatetoCart");
+}
+
 <div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -49,22 +95,10 @@
 
                 <ins class="text-danger">$@Model.priceBook</ins>
                 <p>
-                    A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until.
+                    @Html.Raw(Model.content)
                 </p>
                 <div class="row mt-4">
-                    <div class="col-md-6">
-                        <div class="form-group d-flex">
-                            <div class="select-wrap">
-                                <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                <select name="" id="" class="form-control">
-                                    <option value="">Small</option>
-                                    <option value="">Medium</option>
-                                    <option value="">Large</option>
-                                    <option value="">Extra Large</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="w-100"></div>
                     <div class="input-group col-md-6 d-flex mb-3">
                         <span class="input-group-btn mr-2">
@@ -73,10 +107,7 @@
                             </button>
                         </span>
                         <input type="number" id="soluong" name="soluong" class="form-control input-number" value="1" min="1" max="100">
-                        <span class="input-group-btn ml-2">
-                            <button class="count-btn increment"><i class="fas fa-chevron-up"></i></button>
-                            <button class="count-btn decrement"><i class="fas fa-chevron-down"></i></button>
-                        </span>
+
                     </div>
                     <div class="w-100"></div>
                     <div class="col-md-12">
@@ -84,7 +115,7 @@
                     </div>
                 </div>
                 <div>
-                    <button class="btn theme-btn--dark3 btn--xl mt-5 mt-sm-0 rounded-5" name="MUA">
+                    <button class="btn btn-black py-3 px-5" name="MUA">
                         <span class="mr-2"><i class="ion-android-add"></i></span>
                         Add To Cart
                     </button>
@@ -172,14 +203,7 @@
     height: auto;
     overflow: hidden;
     outline: 0;">
-    <div class="alert alert-success" role="alert" style="margin-bottom:0;">
-        <div class="alert-message" style="text-align:center">
-            <h4 class="alert-heading">MUA THÀNH CÔNG</h4>
-            <p>
-                Success
-            </p>
-        </div>
-    </div>
+
 </div>
 
 @section scripts{
@@ -187,13 +211,13 @@
         $(document).on('click', "button[name='MUA']", function () {
 
             Swal.fire({
-                title: 'Bạn muốn mua sản phảm này',
-                icon: 'warning',
+                title: 'Are you sure?',
+                text: "Book will add to Cart!",
+                icon: '',
                 showCancelButton: true,
-                cancelButtonText:'<i class="fas fa-times"></i>',
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: '<i class="fas fa-check"></i>'
+                confirmButtonText: 'Oke!'
             }).then((result) => {
                 if (result.isConfirmed) {
 
@@ -210,14 +234,18 @@
                         },
                         success: function (data) {
                             if (data.code == 200) {
+
                                 location.reload();
-                                Swal.fire(
-                                    'Thêm thành công!'
-                                )
 
 
                             } else {
-                                alert("Loi");
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'error',
+                                    title: 'Error !!',
+                                    showConfirmButton: false,
+                                    timer: 1800
+                                });
                                 console.log(data.msg);
                             }
                         }

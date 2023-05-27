@@ -119,7 +119,7 @@
     <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="avatar" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="payfor" Type="Int32" Nullable="false" />
-    <Property Name="created" Type="DateTime" Precision="0" />
+    <Property Name="created" Type="DateTime" Precision="3" />
     <NavigationProperty Name="PaymentForRegisterdUsers" Relationship="Self.FK__PaymentFo__Regis__2A4B4B5E" FromRole="RegisteredUser" ToRole="PaymentForRegisterdUser" />
     <NavigationProperty Name="Reviews" Relationship="Self.FK__Review__Register__36B12243" FromRole="RegisteredUser" ToRole="Review" />
   </EntityType>
@@ -281,5 +281,14 @@
       <End Role="Visitor" EntitySet="Visitors" />
       <End Role="Review" EntitySet="Reviews" />
     </AssociationSet>
+    <EntitySet Name="Brands" EntityType="EP_ICECREAMModel.Brand" />
   </EntityContainer>
+  <EntityType Name="Brand">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="brand_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="image" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

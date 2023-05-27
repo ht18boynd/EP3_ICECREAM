@@ -11,11 +11,7 @@ namespace EP3_ICE_CREAM.Models
 {
     using System;
     using System.Collections.Generic;
-
-    using System.ComponentModel;
-
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class RegisteredUser
     {
         public RegisteredUser()
@@ -23,40 +19,16 @@ namespace EP3_ICE_CREAM.Models
             this.PaymentForRegisterdUsers = new HashSet<PaymentForRegisterdUser>();
             this.Reviews = new HashSet<Review>();
         }
-
+    
         public int RegisteredUser_id { get; set; }
-
-        [Display(Name = "Full Name")]
-        [Required(ErrorMessage = "Not Null")]
         public string fullName { get; set; }
-
-
-        [Display(Name = "Email")]
-        [Required(ErrorMessage ="Not Null")]
-        [DataType(DataType.EmailAddress , ErrorMessage ="Example :abc@gmail.com")]
         public string email { get; set; }
-
-
-        [Display(Name ="Password")]
-        [Required(ErrorMessage ="Not Null")]
-        [DataType(DataType.Password)]
         public string password { get; set; }
-
-
-        [Display(Name = "Phone Number")]
-        [Required(ErrorMessage = "Not Null")]
-        [DataType(DataType.PhoneNumber)]
-
         public string phone { get; set; }
-
-        [DisplayName("Enter Address")]
-        [Required(ErrorMessage = "Address is required")]
-        [StringLength(70)]
         public string address { get; set; }
         public string avatar { get; set; }
-
         public int payfor { get; set; }
-        public DateTime created { get; set; }
+        public Nullable<System.DateTime> created { get; set; }
     
         public virtual ICollection<PaymentForRegisterdUser> PaymentForRegisterdUsers { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }

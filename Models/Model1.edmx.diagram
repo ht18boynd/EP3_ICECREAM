@@ -24,6 +24,7 @@
         <AssociationConnector Association="EP_ICECREAMModel.FK__PaymentFo__Regis__2A4B4B5E" ManuallyRouted="false" />
         <AssociationConnector Association="EP_ICECREAMModel.FK__Review__Register__36B12243" ManuallyRouted="false" />
         <AssociationConnector Association="EP_ICECREAMModel.FK__Review__Visitor___37A5467C" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EP_ICECREAMModel.Brand" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

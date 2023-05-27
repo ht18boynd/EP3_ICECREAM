@@ -181,6 +181,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BrandController.cs" />
     <Compile Include="Areas\Admin\Controllers\BannersController.cs" />
     <Compile Include="Areas\Admin\Controllers\BlogController.cs" />
     <Compile Include="Areas\Admin\Controllers\BookController.cs" />
@@ -202,6 +203,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Book.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Brand.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Cart.cs" />
@@ -235,6 +239,7 @@
     <Compile Include="Models\PaymentForRegisterdUser.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RandomPassword.cs" />
     <Compile Include="Models\Recipe.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -245,6 +250,8 @@
     <Compile Include="Models\Review.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SetDateVietNam.cs" />
+    <Compile Include="Models\StyleContenSendEmail.cs" />
     <Compile Include="Models\transaction.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -2862,6 +2869,11 @@
     <Content Include="Areas\Admin\Views\Blog\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Blog\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Blog\Index.cshtml" />
+    <Content Include="assets\php\mail.php" />
+    <Content Include="Areas\Admin\Views\Brand\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\Delete.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2881,6 +2893,21 @@
     <Content Include="Uploads\Banners\87620230517202548Danhmuc.jpg" />
     <Content Include="Uploads\Banners\88720230517202557Danhmuc.jpg" />
     <Content Include="Uploads\Banners\null.png" />
+    <Content Include="Uploads\Blogs\null.png" />
+    <Content Include="Uploads\Books\19720230519084803Books.jpg" />
+    <Content Include="Uploads\Books\41320230519200037Books.jpg" />
+    <Content Include="Uploads\Books\44720230519095343Books.jpg" />
+    <Content Include="Uploads\Books\45220230519132815Books.jpg" />
+    <Content Include="Uploads\Books\47220230519132602Books.jpg" />
+    <Content Include="Uploads\Books\52420230519132635Books.jpg" />
+    <Content Include="Uploads\Books\53420230519132710Books.jpg" />
+    <Content Include="Uploads\Books\63820230519090829Books.jpg" />
+    <Content Include="Uploads\Books\82520230519132431Books.jpg" />
+    <Content Include="Uploads\Books\83820230519132530Books.jpg" />
+    <Content Include="Uploads\Books\98820230519132744Books.jpg" />
+    <Content Include="Uploads\Books\9920230519091334Books.jpg" />
+    <Content Include="Uploads\Books\null.png" />
+    <Content Include="Uploads\Brands\null.png" />
     <Content Include="Uploads\Flavors\null.png" />
     <Content Include="Uploads\ImgNull\null.png" />
     <Content Include="Uploads\null.png" />
@@ -2996,10 +3023,10 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Books_Details.cshtml" />
     <Content Include="Views\Home\ViewCartShopping.cshtml" />
+    <Content Include="Views\Home\Transaction.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Uploads\Books\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

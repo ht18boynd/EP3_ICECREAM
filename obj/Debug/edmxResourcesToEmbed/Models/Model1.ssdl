@@ -46,6 +46,14 @@
     <Property Name="status" Type="int" />
     <Property Name="created" Type="smalldatetime" />
   </EntityType>
+  <EntityType Name="Brand">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="brand_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="image" Type="varchar" MaxLength="100" />
+  </EntityType>
   <EntityType Name="Contact">
     <Key>
       <PropertyRef Name="id" />
@@ -112,7 +120,7 @@
     <Property Name="address" Type="varchar(max)" Nullable="false" />
     <Property Name="avatar" Type="varchar" MaxLength="100" />
     <Property Name="payfor" Type="int" Nullable="false" />
-    <Property Name="created" Type="smalldatetime" />
+    <Property Name="created" Type="datetime" />
   </EntityType>
   <EntityType Name="Review">
     <Key>
@@ -236,6 +244,7 @@
     <EntitySet Name="Banner" EntityType="Self.Banner" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Blog" EntityType="Self.Blog" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Flavor" EntityType="Self.Flavor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />

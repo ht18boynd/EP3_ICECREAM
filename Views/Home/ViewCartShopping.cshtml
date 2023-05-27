@@ -6,6 +6,32 @@
     List<EP3_ICE_CREAM.Models.Cart> Cart = Session["cart"] as List<EP3_ICE_CREAM.Models.Cart>;
     int tamtinh = 0;
 }
+@if (Session["RemoveCart"] != null)
+{
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Delete Success',
+            showConfirmButton: false,
+            timer: 1500
+        })
+    </script>
+    Session.Remove("RemoveCart");
+}
+@if (Session["UpdateCart"] != null)
+{
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Update Success',
+            showConfirmButton: false,
+            timer: 1500
+        })
+    </script>
+    Session.Remove("UpdateCart");
+}
 <style>
     .txt_sl {
         color: #1d1d1d;
@@ -36,12 +62,13 @@
                     <table class="table">
                         <thead class="thead-primary">
                             <tr class="text-center">
-                                <th>&nbsp;</th>
-                                <th>&nbsp;</th>
-                                <th>book name</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Total</th>
+                                <th class="text-center">&nbsp;</th>
+                                <th class="text-center">&nbsp;</th">
+                                <th class="text-center">Book name</th>
+                                <th class="text-center">Price</th>
+                                <th class="text-center">Quantity</th>
+                                <th class="text-center">Total</th>
+                                <th class="text-center">&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -49,7 +76,7 @@
                                 if (Cart == null)
                                 {
                                     <tr>
-                                        <td> Chưa có sản phẩm</td>
+                                        <td> No Product , Please Buy To Continuce</td>
                                     </tr>
 
 
@@ -76,20 +103,23 @@
                                                 </td>
                                                 <td class="text-center">
                                                     @*  <span class="badge badge-danger position-static">In Stock</span>*@
-                                                    @item._price.ToString("N0") đ
+                                                    @item._price.ToString("N0") $
                                                 </td>
                                                 <td class="text-center">
-                                                    <input class="txt_sl" type="number" name="quantity" id="quantity" min="1" step="1" value="@item._quantity">
-                                                </td>
-                                                <td class="text-center">
-                                                    <span class="whish-list-price">
-                                                        @item._sum.ToString("N0") đ
+                                                    <span class="whish-title">
+                                                        <input class="txt_sl" type="number" name="quantity" id="quantity" min="1" step="1" value="@item._quantity">
                                                     </span>
                                                 </td>
+                                                
+
                                                 <td class="text-center">
+                                                    <span class="whish-list-price">
+                                                        @item._sum.ToString("N0") $
+                                                    </span>
+                                                </td>
+                                                <td class="product-remove">
                                                     <div style="display:flex;height:100%;width:100%;align-items:center;">
-                                                        <a class="btn btn-danger" href="~/Home/DeleteCartItem/@item._book_id"><i class="fas fa-times"></i></a>&nbsp;
-                                                        <button class="btn btn-info" type="submit"><i class="fas fa-check"></i></button>
+                                                        <a class="ion-ios-close" href="~/Home/DeleteCartItem/@item._book_id"><i class="fas fa-times"></i></a>&nbsp;
                                                     </div>
                                                 </td>
                                             </tr>
@@ -102,7 +132,7 @@
                                 }
                             }
 
-                            <
+
 
                         </tbody>
                     </table>
@@ -110,62 +140,10 @@
             </div>
         </div>
         <div class="row justify-content-end">
-            <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
-                <div class="cart-total mb-3">
-                    <h3>Coupon Code</h3>
-                    <p>Enter your coupon code if you have one</p>
-                    <form action="#" class="info">
-                        <div class="form-group">
-                            <label for="">Coupon code</label>
-                            <input type="text" class="form-control text-left px-3" placeholder="">
-                        </div>
-                    </form>
-                </div>
-                <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Apply Coupon</a></p>
-            </div>
-            <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
-                <div class="cart-total mb-3">
-                    <h3>Estimate shipping and tax</h3>
-                    <p>Enter your destination to get a shipping estimate</p>
-                    <form action="#" class="info">
-                        <div class="form-group">
-                            <label for="">Country</label>
-                            <input type="text" class="form-control text-left px-3" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="country">State/Province</label>
-                            <input type="text" class="form-control text-left px-3" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="country">Zip/Postal Code</label>
-                            <input type="text" class="form-control text-left px-3" placeholder="">
-                        </div>
-                    </form>
-                </div>
-                <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Estimate</a></p>
-            </div>
-            <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
-                <div class="cart-total mb-3">
-                    <h3>Cart Totals</h3>
-                    <p class="d-flex">
-                        <span>Subtotal</span>
-                        <span>$20.60</span>
-                    </p>
-                    <p class="d-flex">
-                        <span>Delivery</span>
-                        <span>$0.00</span>
-                    </p>
-                    <p class="d-flex">
-                        <span>Discount</span>
-                        <span>$3.00</span>
-                    </p>
-                    <hr>
-                    <p class="d-flex total-price">
-                        <span>Total</span>
-                        <span>$17.60</span>
-                    </p>
-                </div>
-                <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+            
+            
+             
+                <p><a href="~/Home/Transaction" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
             </div>
         </div>
     </div>

@@ -19,89 +19,89 @@
 
 <section class="ftco-section">
     <div class="container">
+        <div class="col-md-6">
+            
+              <form asp-action="Shop" method="get" class="row">
+            <!-- Input Search -->
+            <div class="col-md-8">
+                <input type="text" class="form-control" id="searchString" name="searchString"
+                      value="@ViewData["CurrentFilter"]" placeholder="Search...">
+            </div>
+            <!-- Submit Button -->
+            <div class="col-md-4">
+                <input type="submit" value="Search" class="btn btn-primary">
+            </div>
+            </form>
+
+
+        </div>
         <div class="row justify-content-center">
             <div class="col-md-10 mb-5 text-center">
                 <ul class="product-category">
+
                     <li><a href="#" class="active">All Book For Cake and Cream</a></li>
 
                 </ul>
             </div>
+
         </div>
         <div class="row">
-            <div class="row">
-                @{
-                    
-
-                        foreach (var item in Model)
-                        {
-                            <div class="col-md-6 col-lg-3 ftco-animate">
-                                                <div class="product">
-                                                    <a href="~/Home/Books_Details/@item.Book_id">
-                                                        <img class="img-fluid" src="~/Uploads/Books/@item.bookImage" alt="Colorlib Template" style="width: 300px; height: 300px;">
-                                                        <span class="status">@item.discount %</span>
-                                                        <div class="overlay"></div>
-                                                    </a>
-                                                    <div class="text py-3 pb-4 px-3 text-center">
-                                                        <h3><a href="#">@item.titleBook</a></h3>
-                                                        <div class="d-flex">
-                                                            <div class="pricing">
-                                                                @{ var priceAfter = item.priceBook - (item.priceBook * item.discount / 100); }
-                                                                <p class="price"><span class="mr-2 price-dc">$@item.priceBook</span><span class="price-sale"> $@priceAfter</span></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="bottom-area d-flex px-3">
-                                                            <div class="m-auto d-flex">
-                                                                <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                                                                    <span><i class="ion-ios-menu"></i></span>
-                                                                </a>
-                                                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                                                                    <span><i class="ion-ios-cart"></i></span>
-                                                                </a>
-                                                                <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                                                                    <span><i class="ion-ios-heart"></i></span>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                            </div>
-                        }
-
-                    
-                }
+            @foreach (var item in Model)
+            {
                 <div class="col-md-6 col-lg-3 ftco-animate">
                     <div class="product">
-                        Commimg soon...
-
-
-                    </div>
-
-
-                </div>
-            </div>
-
-        </div>
-        <div class="row mt-5">
-            <div class="col text-center">
-                <div class="block-27">
-                    <ul>
-                        <div>
-                            <nav aria-label="Page navigation example">
-
-                                @Html.PagedListPager(Model, page => Url.Action("Shop", new { page }), new PagedListRenderOptions()
-                           {
-                               UlElementClasses = new[] { "pagination " },
-                               LiElementClasses = new[] { "page-item", "page-link" },
-                               LinkToPreviousPageFormat = "Previous",
-                               LinkToNextPageFormat = "Next",
-                           })
-                            </nav>
-                            @*Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount*@
+                        <a href="~/Home/Books_Details/@item.Book_id">
+                            <img class="img-fluid" src="~/Uploads/Books/@item.bookImage" alt="Colorlib Template" style="width: 300px; height: 300px;">
+                            <span class="status">@item.discount %</span>
+                            <div class="overlay"></div>
+                        </a>
+                        <div class="text py-3 pb-4 px-3 text-center">
+                            <h3><a href="#">@item.titleBook</a></h3>
+                            <div class="d-flex">
+                                <div class="pricing">
+                                    @{ var priceAfter = item.priceBook - (item.priceBook * item.discount / 100); }
+                                    <p class="price"><span class="mr-2 price-dc">$@item.priceBook</span><span class="price-sale"> $@priceAfter</span></p>
+                                </div>
+                            </div>
+                            <div class="bottom-area d-flex px-3">
+                                <div class="m-auto d-flex">
+                                    <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                                        <span><i class="ion-ios-menu"></i></span>
+                                    </a>
+                                    <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                        <span><i class="ion-ios-cart"></i></span>
+                                    </a>
+                                    <a href="#" class="heart d-flex justify-content-center align-items-center ">
+                                        <span><i class="ion-ios-heart"></i></span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                    </ul>
+                    </div>
                 </div>
+            }
+
+        </div>
+        <div class="col text-center">
+            <div class="block-27">
+                <ul>
+                    <li>
+
+
+                        @Html.PagedListPager(Model, page => Url.Action("Shop", new { page }), new PagedListRenderOptions()
+                   {
+                       UlElementClasses = new[] { "pagination " },
+                       LiElementClasses = new[] { "page-item", "page-link" },
+                       LinkToPreviousPageFormat = "<",
+                       LinkToNextPageFormat = ">",
+                   })
+                    </li>
+                    @*Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount*@
+
+                </ul>
             </div>
         </div>
+
     </div>
 </section>
 
@@ -123,4 +123,6 @@
         </div>
     </div>
 </section>
+
+
 

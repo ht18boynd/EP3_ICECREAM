@@ -173,5 +173,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Brands">
+      <EntityTypeMapping TypeName="EP_ICECREAMModel.Brand">
+        <MappingFragment StoreEntitySet="Brand">
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="brand_Name" ColumnName="brand_Name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

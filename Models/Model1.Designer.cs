@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Administrator\Desktop\PR_S3\EP3_ICE_CREAM\Models\Model1.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Administrator\Desktop\Ice_Cream\EP3_ICECREAM\Models\Model1.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
